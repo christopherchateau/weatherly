@@ -5,7 +5,7 @@ class Search extends Component {
         super(props);
     }
     render() { 
-        return (  );
+        return ( <div></div> );
     }
 }
      
