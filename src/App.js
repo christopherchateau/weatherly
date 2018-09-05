@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Search from "./Components/Search";
-import Card from "./Components/Card";
 import CurrentWeather from "./Components/CurrentWeather";
 import SevenHour from "./Components/SevenHour";
 import TenDay from "./Components/TenDay";
@@ -16,7 +15,8 @@ class App extends Component {
     weather: data.current_observation.weather,
     feelsLike: data.current_observation.feelslike_f,
     humidity: data.current_observation.relative_humidity,
-    wind: data.current_observation.wind_string
+    wind: data.current_observation.wind_string,
+    hourlyForecast: data.hourly_forecast
   };
 
   getWeather = () => {
@@ -27,7 +27,8 @@ class App extends Component {
       weather: data.current_observation.weather,
       feelsLike: data.current_observation.feelslike_f,
       humidity: data.current_observation.relative_humidity,
-      wind: data.current_observation.wind_string
+      wind: data.current_observation.wind_string,
+      hourlyForecast: data.hourly_forecast
     });
   };
 
@@ -44,8 +45,7 @@ class App extends Component {
           wind = {this.state.wind}
         />
         <Search />
-        <Card />
-        <SevenHour />
+        <SevenHour hourlyForecast={this.state.hourlyForecast}/>
         <TenDay />
         <Welcome />
       </div>
