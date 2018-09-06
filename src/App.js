@@ -25,8 +25,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        <CurrentWeather currentObservation={this.state.currentObservation} />
         <Search />
+        <CurrentWeather currentObservation={this.state.currentObservation} />
         <SevenHour hourlyForecast={this.state.hourlyForecast} />
         <TenDay dailyForecast={this.state.dailyForecast} />
         <Welcome />
