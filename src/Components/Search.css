@@ -1,0 +1,27 @@
+.fa-search {
+  font-size: 25px;
+  margin: 12px;
+  color: grey;
+}
+
+.search-field {
+  font-size: 22px;
+  margin: 12px 0 0 18px;
+  border-radius: 30px;
+  width: 280px;
+  height: 25px;
+  border: none;
+  justify-content: center;
+  outline: none;
+  caret-color: transparent;
+}
+
+.search-bar-wrapper {
+  display: flex;
+  height: 50px;
+  width: 350px;
+  background-color: white;
+  border-radius: 50px;
+  margin: 50px 0 0 50px;
+
+}
