@@ -16,21 +16,19 @@ class App extends Component {
       currentObservation: data.current_observation,
       hourlyForecast: data.hourly_forecast,
       dailyForecast: data.forecast
-    }
+    };
   }
   getWeather = () => {
-    this.setState({
-    
-    });
+    this.setState({});
   };
 
   render() {
     return (
       <div>
-        <CurrentWeather currentObservation={this.state.currentObservation} />
         <Search />
-        <SevenHour hourlyForecast={this.state.hourlyForecast}/>
-        <TenDay dailyForecast={this.state.dailyForecast}/>
+        <CurrentWeather currentObservation={this.state.currentObservation} />
+        <SevenHour hourlyForecast={this.state.hourlyForecast} />
+        <TenDay dailyForecast={this.state.dailyForecast} />
         <Welcome />
       </div>
     );

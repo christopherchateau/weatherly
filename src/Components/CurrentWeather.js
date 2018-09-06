@@ -6,7 +6,7 @@ class CurrentWeather extends Component {
 }
 render() {
     return (
-      <div>
+      <div className="current-weather">
         <h1>{this.props.currentObservation.display_location.full}</h1>
         <h3>{this.props.currentObservation.temp_f}° F - {this.props.currentObservation.weather}</h3>
         <img src={this.props.icon_url}/>
