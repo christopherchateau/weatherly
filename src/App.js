@@ -10,15 +10,14 @@ import "./App.css";
 class App extends Component {
   constructor() {
     super();
-    
+
     this.state = {
       city: data.current_observation.display_location.full,
       currentObservation: data.current_observation,
       hourlyForecast: data.hourly_forecast,
       dailyForecast: data.forecast
-    };
+    }
   }
-
   getWeather = () => {
     this.setState({
     
