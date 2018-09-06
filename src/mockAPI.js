@@ -30,7 +30,7 @@ const data = {
       },
       observation_location: {
         full:
-          'WAVE 3 News Weather Garden / 811 Call Before You Dig, Louisville, Kentucky',
+        'WAVE 3 News Weather Garden / 811 Call Before You Dig, Louisville, Kentucky',
         city: 'WAVE 3 News Weather Garden / 811 Call Before You Dig, Louisville',
         state: 'Kentucky',
         country: 'US',
