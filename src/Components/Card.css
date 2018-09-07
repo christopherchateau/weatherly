@@ -1,0 +1,31 @@
+/* ADD FONT */
+
+.sevenHourCards {
+  display: none;
+}
+
+
+.tenDayCards {
+  display: flex;
+  flex-direction: row; 
+  border-top: 5px solid white;
+  margin-top: 100px;
+  border-bottom: 5px solid white;
+  padding-top: 10px;
+  padding-bottom: 70px;
+}
+
+.card h1 {
+  font-size: 20px;
+}
+
+.card h3 {
+  font-size: 14px; 
+  line-height: 1.5em;
+}
+
+
+.card p {
+  margin-top: 10px;
+  font-size: 14px; 
+}
