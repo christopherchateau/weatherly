@@ -3,6 +3,7 @@ import Card from "./Card";
 
 function TenDay(props) {
   const { forecastday } = props.dailyForecast.simpleforecast;
+  // console.log(forecastday )
    return ( 
        <div>
         {forecastday.map( (day, index) => {
