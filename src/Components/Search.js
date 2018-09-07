@@ -34,9 +34,10 @@ class Search extends Component {
           />
         </form>
             <FontAwesomeIcon icon="search" />
+            <h1 className="title">weatherly</h1>
       </div>
     );
-  }
+}
 }
 
 export default Search;
