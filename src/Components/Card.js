@@ -1,4 +1,5 @@
 import React from "react";
+import "./Card.css";
 
 function Card(props) {
   const data = Object.keys(props);
@@ -10,11 +11,11 @@ function Card(props) {
       : (hour = `${hour} pm`);
 
     return (
-      <div>
-        <h1>{hour}</h1>
-        <img src={props.icon_url} />
-        <h1>{props.temp.english}° F</h1>
-      </div>
+        <div className="card">
+          <h1>{hour}</h1>
+          <img src={props.icon_url} />
+          <h1>{props.temp.english}° F</h1>
+        </div>
     );
   } else {
     let chanceOfRain = props.pop;
@@ -24,14 +25,13 @@ function Card(props) {
       : (chanceOfRain = `Chance of Rain ${chanceOfRain} %`);
 
     return (
-      <div>
-        <h1>{props.date.weekday.slice(0, 3)}</h1>
-        <img src={props.icon_url} />
-        <h1>HIGH OF {props.high.fahrenheit}° F</h1>
-        <h1>LOW OF {props.low.fahrenheit}° F</h1>
-        <p>Conditions: {props.conditions}</p>
-        <p>{chanceOfRain}</p>
-      </div>
+        <div className="card">
+          <h1>{props.date.weekday.slice(0, 3)}</h1>
+          <img src={props.icon_url} />
+          <h3>HIGH OF {props.high.fahrenheit}° F</h3>
+          <h3>LOW OF {props.low.fahrenheit}° F</h3>
+          <p>Conditions: {props.conditions}</p>
+        </div>
     );
   }
 }

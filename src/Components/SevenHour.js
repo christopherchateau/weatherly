@@ -4,7 +4,7 @@ import Card from "./Card";
 function SevenHour(props)  {
   const sevenHourData = props.hourlyForecast.slice(0, 7);
   return ( 
-     <div>
+     <div className="sevenHourCards">
        {sevenHourData.map( (data, index) => {
           return(
               <Card {...data} key={index} />

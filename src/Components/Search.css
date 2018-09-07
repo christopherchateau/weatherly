@@ -4,8 +4,8 @@
 
 .fa-search {
   font-size: 25px;
-  margin: 12px;
   color: grey;
+  margin: 15px 0 0 100px;
 }
 
 .search-field {
@@ -26,16 +26,26 @@
   width: 350px;
   background-color: white;
   border-radius: 50px;
-  margin: 50px 0 0 50px;
   justify-content: top;
+  width: 450px;
+  margin: 20px;
 }
 
 .title {
-  margin-left: 640px;
+  margin: 20px;
   font-family: "Pacifico", cursive;
   font-size: 70px;
-  border: 5px white solid;
+  border: 6px white solid;
   height: 140px;
-  padding: 0 30px;
+  padding: 0 20px;
   border-radius: 80px;
+  width: 420px;
 }
+
+.title-wrapper {
+  display: flex;
+  flex-direction: row; 
+  justify-content: space-between;
+}
+
+

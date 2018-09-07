@@ -5,7 +5,7 @@ function TenDay(props) {
   const { forecastday } = props.dailyForecast.simpleforecast;
   // console.log(forecastday )
    return ( 
-       <div>
+       <div className="tenDayCards">
         {forecastday.map( (day, index) => {
           return(
               <Card {...day} key={index} />
