@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from "./Card";
+import ToggleWeather from './ToggleWeather'
 
 function SevenHour(props)  {
   const sevenHourData = props.hourlyForecast.slice(0, 7);

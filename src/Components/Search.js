@@ -17,7 +17,7 @@ class Search extends Component {
   }
   render() {
     return (
-      <div class="title-wrapper">
+      <div className="title-wrapper">
         <h1 className="title">weatherly</h1>
         <div className="search-bar-wrapper">
           <form>
