@@ -21,6 +21,13 @@ class App extends Component {
   getWeather = () => {
     this.setState({});
   };
+  retrieveLastLocation = () => {
+    return JSON.parse(localStorage.getItem("location"));
+  };
+  storeLastLocation = location => {
+    let stringified = JSON.stringify(location);
+    localStorage.setItem("location", stringified);
+  };
 
   render() {
     return (
