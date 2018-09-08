@@ -1,8 +1,8 @@
 import React from "react";
 import { shallow, mount } from "enzyme";
-import App from "../App";
+import CurrentWeather from "../Components/CurrentWeather";
 
-describe("App component", () => {
+describe("CurrentWeather component", () => {
   let wrapper;
 
   beforeEach(() => {

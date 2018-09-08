@@ -1,16 +1,14 @@
 import React from "react";
 import { shallow, mount } from "enzyme";
-import App from "../App";
+import Adapter from "enzyme-adapter-react-16";
+import TenDay from "../Components/TenDay";
 
-describe("App component", () => {
+describe("TenDay component", () => {
   let wrapper;
 
-  beforeEach(() => {
-
-  });
+  beforeEach(() => {});
 
   it("should be a thing", () => {
     //expect(wrapper).toBeDefined();
   });
-
 });

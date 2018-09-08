@@ -1,8 +1,8 @@
 import React from "react";
 import { shallow, mount } from "enzyme";
-import App from "../App";
+import Search from "../Components/Search";
 
-describe("App component", () => {
+describe("Search component", () => {
   let wrapper;
 
   beforeEach(() => {

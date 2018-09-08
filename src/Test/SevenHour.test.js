@@ -1,8 +1,8 @@
 import React from "react";
 import { shallow, mount } from "enzyme";
-import App from "../App";
+import SevenHour from "../Components/SevenHour";
 
-describe("App component", () => {
+describe("SevenHour component", () => {
   let wrapper;
 
   beforeEach(() => {
