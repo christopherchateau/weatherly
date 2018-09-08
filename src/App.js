@@ -3,7 +3,7 @@ import Search from "./Components/Search";
 import CurrentWeather from "./Components/CurrentWeather";
 import SevenHour from "./Components/SevenHour";
 import TenDay from "./Components/TenDay";
-import Welcome from "./Components/Welcome";
+//import Welcome from "./Components/Welcome";
 import data from "./mockAPI.js";
 import apiConfig from "./apiKey";
 import "./App.css";
@@ -15,6 +15,8 @@ class App extends Component {
     super();
 
     this.state = {
+      stateName: '',
+      cityName: '',
       city: data.current_observation.display_location.full,
       currentObservation: data.current_observation,
       hourlyForecast: data.hourly_forecast,
@@ -22,12 +24,14 @@ class App extends Component {
       isToggleOn: true
     };
     this.handleClick = this.handleClick.bind(this);
+    this.updateLocation = this.updateLocation.bind(this);
   }
 
   componentDidMount() {
-    fetch(`http://api.wunderground.com/api/${apiKey}/conditions/q/CA/San_Francisco.json`)
+    // fetch(`http://api.wunderground.com/api/${apiKey}/conditions/q/${this.state.stateName}/${this.state.cityName}.json`)
+    fetch(`http://api.wunderground.com/api/${apiKey}/conditions/q/CO/Denver.json`)
       .then(data => data.json())
-      .then(data => console.log(data))
+      //.then(data => console.log(data))
       // .then(questions => {
       //   this.setState({
           
@@ -36,6 +40,13 @@ class App extends Component {
       // .catch(err => {
       //   throw new Error(err);
       // });
+  }
+
+  updateLocation(location) {
+    this.setState({
+      stateName: location.state,
+      cityName: location.city
+    })
   }
 
   getWeather = () => {
@@ -60,13 +71,14 @@ class App extends Component {
     if (this.state.isToggleOn) {
       return (
         <div>
-          <Search />
+          <Search updateLocation={this.updateLocation}/>
           <CurrentWeather currentObservation={this.state.currentObservation} />
-          <button onClick={this.handleClick}>
+          <button 
+            className="toggle-button"
+            onClick={this.handleClick}>
             {this.state.isToggleOn ? "HOURLY" : "WEEKLY"}
           </button>
           <SevenHour hourlyForecast={this.state.hourlyForecast} />
-          <Welcome />
         </div>
       );
     } else {
@@ -74,11 +86,12 @@ class App extends Component {
         <div>
           <Search />
           <CurrentWeather currentObservation={this.state.currentObservation} />
-          <button onClick={this.handleClick}>
+          <button 
+            className="toggle-button"
+            onClick={this.handleClick}>
             {this.state.isToggleOn ? "HOURLY" : "WEEKLY"}
           </button>
           <TenDay dailyForecast={this.state.dailyForecast} />
-          <Welcome />
         </div>
       );
     }

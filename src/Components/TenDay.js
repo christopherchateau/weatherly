@@ -1,6 +1,5 @@
 import React from 'react';
 import Card from "./Card";
-import ToggleWeather from './ToggleWeather'
 
 function TenDay(props) {
   const { forecastday } = props.dailyForecast.simpleforecast;

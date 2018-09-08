@@ -13,7 +13,7 @@ function Card(props) {
     return (
         <div className="card">
           <h1>{hour}</h1>
-          <img src={props.icon_url} />
+          <img src={props.icon_url} alt="weather data" />
           <h1>{props.temp.english}° F</h1>
         </div>
     );
@@ -27,7 +27,7 @@ function Card(props) {
     return (
         <div className="card">
           <h1>{props.date.weekday.slice(0, 3)}</h1>
-          <img src={props.icon_url} />
+          <img src={props.icon_url} alt="weather data" />
           <h3>{props.high.fahrenheit}° F</h3>
           <h3>{props.low.fahrenheit}° F</h3>
           <p>{props.conditions}</p>

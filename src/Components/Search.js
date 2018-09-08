@@ -25,7 +25,7 @@ class Search extends Component {
               type="text"
               className="search-field"
               spellCheck="false"
-              aria-label={"search city name or zip code for weather report"}
+              aria-label="search city name or zip code for weather report"
               placeholder="search city or zip code"
               value={this.state.value}
               onChange={event => {
@@ -34,8 +34,15 @@ class Search extends Component {
                 });
               }}
             />
+            <button
+              onClick={event => {
+                event.preventDefault();
+                console.log("asdf");
+              }}
+            >
+              <FontAwesomeIcon icon="search" />
+            </button>
           </form>
-          <FontAwesomeIcon icon="search" />
         </div>
       </div>
     );

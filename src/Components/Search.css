@@ -5,8 +5,13 @@
 .fa-search {
   font-size: 25px;
   color: grey;
-  margin: 15px 0 0 100px;
+  /* margin: 15px 0 0 100px; */
 }
+
+/* button {
+  position: relative;
+  bottom: 200px;
+} */
 
 .search-field {
   font-size: 22px;
@@ -47,5 +52,3 @@
   flex-direction: row; 
   justify-content: space-between;
 }
-
-

@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+// import React, { Component } from 'react';
 
-class Welcome extends Component {
-    constructor(props) {
-        super(props);
-    }
-    render() { 
-        return ( <div></div> );
-    }
-}
+// class Welcome extends Component {
+//     constructor(props) {
+//         super(props);
+//     }
+//     render() { 
+//         return ( <div></div> );
+//     }
+// }
 
-export default Welcome;
+// export default Welcome;
