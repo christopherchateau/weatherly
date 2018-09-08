@@ -1,4 +1,4 @@
 export default {
-  "weatherUndergroundKey": "12345",
+  "weatherUndergroundKey": "1234567",
 }
 
