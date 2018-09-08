@@ -24,7 +24,9 @@ class App extends Component {
   }
 
   getWeather = () => {
-    this.setState({});
+    this.setState({
+      
+    });
   };
 
    handleClick() {
