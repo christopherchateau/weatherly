@@ -12,7 +12,7 @@ class App extends Component {
   constructor() {
     super();
 
-    console.log(apiConfig.weatherUndergroundKey)
+    console.log(apiConfig.weatherUndergroundApiKey)
 
     this.state = {
       city: data.current_observation.display_location.full,
