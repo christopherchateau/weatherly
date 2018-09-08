@@ -28,9 +28,9 @@ function Card(props) {
         <div className="card">
           <h1>{props.date.weekday.slice(0, 3)}</h1>
           <img src={props.icon_url} />
-          <h3>HIGH OF {props.high.fahrenheit}° F</h3>
-          <h3>LOW OF {props.low.fahrenheit}° F</h3>
-          <p>Conditions: {props.conditions}</p>
+          <h3>{props.high.fahrenheit}° F</h3>
+          <h3>{props.low.fahrenheit}° F</h3>
+          <p>{props.conditions}</p>
         </div>
     );
   }
