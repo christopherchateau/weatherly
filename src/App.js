@@ -8,11 +8,11 @@ import data from "./mockAPI.js";
 import apiConfig from "./apiKey";
 import "./App.css";
 
+const apiKey = apiConfig.weatherUndergroundApiKey;
+
 class App extends Component {
   constructor() {
     super();
-
-    console.log(apiConfig.weatherUndergroundApiKey)
 
     this.state = {
       city: data.current_observation.display_location.full,
@@ -22,6 +22,20 @@ class App extends Component {
       isToggleOn: true
     };
     this.handleClick = this.handleClick.bind(this);
+  }
+
+  componentDidMount() {
+    fetch(`http://api.wunderground.com/api/${apiKey}/conditions/q/CA/San_Francisco.json`)
+      .then(data => data.json())
+      .then(data => console.log(data))
+      // .then(questions => {
+      //   this.setState({
+          
+      //   });
+      // })
+      // .catch(err => {
+      //   throw new Error(err);
+      // });
   }
 
   getWeather = () => {
