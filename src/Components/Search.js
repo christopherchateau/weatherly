@@ -3,8 +3,11 @@ import "./Search.css";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import cityStateList from '../cityStateList';
 
 library.add(faSearch);
+
+console.log(cityStateList)
 
 class Search extends Component {
   constructor(props) {
