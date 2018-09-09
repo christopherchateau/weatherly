@@ -15,8 +15,7 @@ class App extends Component {
     super();
 
     this.state = {
-      stateName: '',
-      cityName: '',
+      location: '',
       city: data.current_observation.display_location.full,
       currentObservation: data.current_observation,
       hourlyForecast: data.hourly_forecast,
@@ -27,9 +26,9 @@ class App extends Component {
     this.updateLocation = this.updateLocation.bind(this);
   }
 
-  componentDidMount() {
+  componentDidMount(location) {
     // fetch(`http://api.wunderground.com/api/${apiKey}/conditions/q/${this.state.stateName}/${this.state.cityName}.json`)
-    fetch(`http://api.wunderground.com/api/${apiKey}/conditions/q/CO/Denver.json`)
+    fetch(`http://api.wunderground.com/api/${apiKey}//geolookup/conditions/hourly/forecast10day/q/${this.state.location}.json`)
       .then(data => data.json())
       //.then(data => console.log(data))
       // .then(questions => {
@@ -42,11 +41,13 @@ class App extends Component {
       // });
   }
 
+  //encodeURIComponent()
+
   updateLocation(location) {
     this.setState({
-      stateName: location.state,
-      cityName: location.city
+      location: location
     })
+    console.log(location);
   }
 
   getWeather = () => {
@@ -76,7 +77,7 @@ class App extends Component {
           <button 
             className="toggle-button"
             onClick={this.handleClick}>
-            {this.state.isToggleOn ? "HOURLY" : "WEEKLY"}
+            {this.state.isToggleOn ? "HOURLY" : "DAILY"}
           </button>
           <SevenHour hourlyForecast={this.state.hourlyForecast} />
         </div>
@@ -84,12 +85,13 @@ class App extends Component {
     } else {
       return (
         <div>
-          <Search />
+          <Search 
+            updateLocation={this.updateLocation}/>
           <CurrentWeather currentObservation={this.state.currentObservation} />
           <button 
             className="toggle-button"
             onClick={this.handleClick}>
-            {this.state.isToggleOn ? "HOURLY" : "WEEKLY"}
+            {this.state.isToggleOn ? "HOURLY" : "DAILY"}
           </button>
           <TenDay dailyForecast={this.state.dailyForecast} />
         </div>

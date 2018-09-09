@@ -1,8 +1,9 @@
 /* ADD FONT */
 
-.tenDayCards, .sevenHourCards {
+.tenDayCards,
+.sevenHourCards {
   display: flex;
-  flex-direction: row; 
+  flex-direction: row;
   margin-top: 100px;
   padding-top: 10px;
   padding-bottom: 70px;
@@ -16,7 +17,7 @@
   padding: 10px;
   border-radius: 10px;
   margin-right: 10px;
-  background-color:rgba(104,100,151, 0.5)
+  background-color: rgba(104, 100, 151, 0.5);
 }
 
 .card h1 {
@@ -24,12 +25,11 @@
 }
 
 .card h3 {
-  font-size: 20px; 
+  font-size: 20px;
   line-height: 1.5em;
 }
 
-
 .card p {
   margin-top: 10px;
-  font-size: 14px; 
+  font-size: 14px;
 }

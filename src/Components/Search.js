@@ -34,10 +34,10 @@ class Search extends Component {
                 });
               }}
             />
-            <button
+            <button className="submit-button"
               onClick={event => {
                 event.preventDefault();
-                console.log("asdf");
+                this.props.updateLocation(this.state.value);
               }}
             >
               <FontAwesomeIcon icon="search" />
