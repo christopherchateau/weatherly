@@ -33,3 +33,14 @@
   margin-top: 10px;
   font-size: 14px;
 }
+
+.fa-cloud,
+.fa-snowflake, 
+.fa-sun, 
+.fa-cloud, 
+.fa-umbrella, 
+.fa-bolt, 
+.fa-feather {
+  font-size: 60px;
+  margin: 10px;
+}

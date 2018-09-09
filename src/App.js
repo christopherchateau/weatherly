@@ -26,16 +26,18 @@ class App extends Component {
     this.updateLocation = this.updateLocation.bind(this);
   }
 
-  componentDidMount(location) {
-    // fetch(`http://api.wunderground.com/api/${apiKey}/conditions/q/${this.state.stateName}/${this.state.cityName}.json`)
-    fetch(`http://api.wunderground.com/api/${apiKey}//geolookup/conditions/hourly/forecast10day/q/${this.state.location}.json`)
-      .then(data => data.json())
-      //.then(data => console.log(data))
-      // .then(questions => {
-      //   this.setState({
-          
-      //   });
-      // })
+  fetchData() {
+    fetch(`http://api.wunderground.com/api/${apiKey}/geolookup/conditions/hourly/forecast10day/q/${this.state.location}.json`)
+      .then(response => response.json())
+      .then(response => console.log(response))
+      .then(response => {
+        this.setState({
+            city: response.data.current_observation.display_location.full,
+            // currentObservation: data.current_observation,
+            // hourlyForecast: data.hourly_forecast,
+            // dailyForecast: data.forecast,
+        });
+      })
       // .catch(err => {
       //   throw new Error(err);
       // });
@@ -47,7 +49,7 @@ class App extends Component {
     this.setState({
       location: location
     })
-    console.log(location);
+    this.fetchData();
   }
 
   getWeather = () => {
