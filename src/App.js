@@ -38,12 +38,12 @@ class App extends Component {
         this.setState({
           currentObservation: cityCall.current_observation,
           hourlyForecast: cityCall.hourly_forecast,
-          dailyForecast: cityCall.forecast,
+          dailyForecast: cityCall.forecast
         });
-      });
-    // .catch(err => {
-    //   throw new Error(err);
-    // });
+      })
+      // .catch(err => {
+      //   throw new Error(err);
+      // });
   }
 
   //encodeURIComponent()
@@ -68,12 +68,11 @@ class App extends Component {
     return JSON.parse(localStorage.getItem("location")) || "";
   };
 
-  
-  storeLastLocation = (location) => {
+  storeLastLocation = location => {
     let stringified = JSON.stringify(location);
     localStorage.setItem("location", stringified);
   };
-  
+
   render() {
     if (this.state.isToggleOn) {
       return (

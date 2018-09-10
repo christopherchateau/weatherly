@@ -36,8 +36,8 @@ function Card(props) {
     let hour = props.FCTTIME.hour;
 
     hour > 12 
-      ? (hour = `${hour - 12} am`) 
-      : (hour = `${hour} pm`);
+      ? (hour = `${hour - 12} pm`) 
+      : (hour = `${hour} am`);
       
     return (
         <div className="card">
