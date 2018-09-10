@@ -1,6 +1,32 @@
+
 .toggle-button {
-  width: 200px;
-  font-size: 30px;
-  position: relative;
-  top: 100px;
+  transition: all 500ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+  /*margin: 20px auto;*/
+  margin: 100px 10px 0 0;
+  width: 190px;
+  text-decoration: none;
+  border-radius: 5px;
+  padding: 20px 30px;
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  color: rgba(30, 22, 54, 0.7);
+  box-shadow: rgba(104, 100, 151, 0.5) 0 0px 0px 2px inset;
+  outline: none;
+  letter-spacing: 1px;
+}
+
+/*.toggle-button {
+  color: rgba(30, 22, 54, 0.6);
+  box-shadow: rgba(30, 22, 54, 0.4) 0 0px 0px 2px inset;
+}
+
+.toggle-button:hover {
+  color: rgba(255, 255, 255, 0.85);
+  box-shadow: rgba(30, 22, 54, 0.7) 0 0px 0px 40px inset;
+}*/
+
+.toggle-button:hover {
+  color: white;
+  box-shadow: rgba(104, 100, 151, 0.5) 0 80px 0px 2px inset;
 }
