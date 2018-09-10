@@ -3,8 +3,11 @@ import "./Search.css";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import cityStateList from '../cityStateList';
 
 library.add(faSearch);
+
+//const trie = (require /Trie)
 
 class Search extends Component {
   constructor(props) {
@@ -34,10 +37,10 @@ class Search extends Component {
                 });
               }}
             />
-            <button
+            <button className="submit-button"
               onClick={event => {
                 event.preventDefault();
-                console.log("asdf");
+                this.props.updateLocation(this.state.value);
               }}
             >
               <FontAwesomeIcon icon="search" />
@@ -50,3 +53,4 @@ class Search extends Component {
 }
 
 export default Search;
+//module exports trie
