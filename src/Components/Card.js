@@ -18,7 +18,6 @@ function Card(props) {
     storm: 'bolt'
   }
 
-  // console.log(props.icon)
   const data = Object.keys(props);
   if (data.includes("FCTTIME")) {
     let hour = props.FCTTIME.hour;
