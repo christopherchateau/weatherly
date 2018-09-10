@@ -15,8 +15,8 @@ class App extends Component {
     super();
 
     this.state = {
-      location: '',
-      city: data.current_observation.display_location.full,
+      city: '',
+      state: '',
       currentObservation: data.current_observation,
       hourlyForecast: data.hourly_forecast,
       dailyForecast: data.forecast,
@@ -27,12 +27,14 @@ class App extends Component {
   }
 
   fetchData() {
-    fetch(`http://api.wunderground.com/api/${apiKey}/geolookup/conditions/hourly/forecast10day/q/${this.state.location}.json`)
+    fetch(`http://api.wunderground.com/api/${apiKey}/geolookup/conditions/hourly/forecast10day/q/${this.state.state}/${this.state.city}.json`)
       .then(response => response.json())
-      .then(response => console.log(response))
+      //.then(response => console.log(response))
       .then(response => {
+        let cityCall = response;
+        //console.log(cityCall.current_observation)
         this.setState({
-            city: response.data.current_observation.display_location.full,
+          currentObservation: cityCall.current_observation,
             // currentObservation: data.current_observation,
             // hourlyForecast: data.hourly_forecast,
             // dailyForecast: data.forecast,
@@ -46,15 +48,15 @@ class App extends Component {
   //encodeURIComponent()
 
   updateLocation(location) {
+    location = location.split(',')
+    console.log(location)
     this.setState({
-      location: location
+      city: location[0],
+      state: location[1]
     })
     this.fetchData();
   }
 
-  getWeather = () => {
-    this.setState({});
-  };
 
   handleClick() {
     this.setState(state => ({
@@ -65,6 +67,7 @@ class App extends Component {
   retrieveLastLocation = () => {
     return JSON.parse(localStorage.getItem("location"));
   };
+
   storeLastLocation = location => {
     let stringified = JSON.stringify(location);
     localStorage.setItem("location", stringified);
