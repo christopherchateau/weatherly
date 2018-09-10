@@ -8,14 +8,27 @@ library.add(faSnowflake, faSun, faCloud, faUmbrella, faBolt, faFeather  );
 
 function Card(props) {
   const icons = {
+    clear: 'sun',
+    sunny: 'sun',
+    mostlysunny: 'sun',
+    partlysunny: 'sun',
     cloudy: 'cloud',
     partlycloudy: 'cloud',
-    clear: 'sun',
-    snow: 'snowflake',
+    mostlycloudy: 'cloud',
+    fog: 'cloud',
+    hazy: 'cloud',
+    chancerain: 'umbrella',
     rain: 'umbrella',
     chancerain: 'umbrella',
-    windy: 'feather',
-    storm: 'bolt'
+    chancetstorms: 'bolt',
+    tstorms: 'bolt',
+    snow: 'snowflake',
+    sleet: 'snowflake',
+    chanceflurries: 'snowflake',
+    chancesleet: 'snowflake',
+    chancesnow: 'snowflake',
+    flurries: 'snowflake',
+    windy: 'feather'
   }
 
   const data = Object.keys(props);
@@ -23,14 +36,15 @@ function Card(props) {
     let hour = props.FCTTIME.hour;
 
     hour > 12 
-      ? (hour = `${hour - 12} am`) 
-      : (hour = `${hour} pm`);
+      ? (hour = `${hour - 12} pm`) 
+      : (hour = `${hour} am`);
       
     return (
         <div className="card">
           <h1>{hour}</h1>
           <FontAwesomeIcon icon={icons[props.icon]} />
-          <h1>{props.temp.english}° F</h1>
+          <h1>{Math.round(props.temp.english)}° F</h1>
+          <p>{props.condition}</p>
         </div>
     );
   } else {
