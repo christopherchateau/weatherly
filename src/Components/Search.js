@@ -7,7 +7,7 @@ import cityStateList from '../cityStateList';
 
 library.add(faSearch);
 
-console.log(cityStateList)
+//const trie = (require /Trie)
 
 class Search extends Component {
   constructor(props) {
@@ -53,3 +53,4 @@ class Search extends Component {
 }
 
 export default Search;
+//module exports trie
