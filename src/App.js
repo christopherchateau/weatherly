@@ -15,8 +15,8 @@ class App extends Component {
     super();
 
     this.state = {
-      city: '',
-      state: '',
+      city: "",
+      state: "",
       currentObservation: data.current_observation,
       hourlyForecast: data.hourly_forecast,
       dailyForecast: data.forecast,
@@ -27,36 +27,36 @@ class App extends Component {
   }
 
   fetchData() {
-    fetch(`http://api.wunderground.com/api/${apiKey}/geolookup/conditions/hourly/forecast10day/q/${this.state.state}/${this.state.city}.json`)
+    fetch(
+      `http://api.wunderground.com/api/${apiKey}/geolookup/conditions/hourly/forecast10day/q/${
+        this.state.state
+      }/${this.state.city}.json`
+    )
       .then(response => response.json())
-      //.then(response => console.log(response))
       .then(response => {
         let cityCall = response;
-        //console.log(cityCall.current_observation)
         this.setState({
           currentObservation: cityCall.current_observation,
-            // currentObservation: data.current_observation,
-            // hourlyForecast: data.hourly_forecast,
-            // dailyForecast: data.forecast,
+          hourlyForecast: cityCall.hourly_forecast,
+          dailyForecast: cityCall.forecast,
         });
-      })
-      // .catch(err => {
-      //   throw new Error(err);
-      // });
+      });
+    // .catch(err => {
+    //   throw new Error(err);
+    // });
   }
 
   //encodeURIComponent()
 
   updateLocation(location) {
-    location = location.split(',')
-    console.log(location)
+    location = location.split(",");
     this.setState({
       city: location[0],
       state: location[1]
-    })
+    });
     this.fetchData();
+    this.storeLastLocation(location);
   }
-
 
   handleClick() {
     this.setState(state => ({
@@ -65,23 +65,22 @@ class App extends Component {
   }
 
   retrieveLastLocation = () => {
-    return JSON.parse(localStorage.getItem("location"));
+    return JSON.parse(localStorage.getItem("location")) || "";
   };
 
-  storeLastLocation = location => {
+  
+  storeLastLocation = (location) => {
     let stringified = JSON.stringify(location);
     localStorage.setItem("location", stringified);
   };
-
+  
   render() {
     if (this.state.isToggleOn) {
       return (
         <div>
-          <Search updateLocation={this.updateLocation}/>
+          <Search updateLocation={this.updateLocation} />
           <CurrentWeather currentObservation={this.state.currentObservation} />
-          <button 
-            className="toggle-button"
-            onClick={this.handleClick}>
+          <button className="toggle-button" onClick={this.handleClick}>
             {this.state.isToggleOn ? "HOURLY" : "DAILY"}
           </button>
           <SevenHour hourlyForecast={this.state.hourlyForecast} />
@@ -90,12 +89,9 @@ class App extends Component {
     } else {
       return (
         <div>
-          <Search 
-            updateLocation={this.updateLocation}/>
+          <Search updateLocation={this.updateLocation} />
           <CurrentWeather currentObservation={this.state.currentObservation} />
-          <button 
-            className="toggle-button"
-            onClick={this.handleClick}>
+          <button className="toggle-button" onClick={this.handleClick}>
             {this.state.isToggleOn ? "HOURLY" : "DAILY"}
           </button>
           <TenDay dailyForecast={this.state.dailyForecast} />
