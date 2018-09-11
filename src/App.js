@@ -26,6 +26,8 @@ class App extends Component {
     if (this.retrieveLastLocation()) {
       let location = this.retrieveLastLocation();
       this.fetchData(`${location[1]}/${location[0]}`);
+    } else {
+      this.fetchData('autoip');
     }
   }
 
