@@ -15,8 +15,7 @@ class App extends Component {
     super();
 
     this.state = {
-      city: "",
-      state: "",
+      location: "",
       currentObservation: data.current_observation,
       hourlyForecast: data.hourly_forecast,
       dailyForecast: data.forecast,
@@ -26,11 +25,17 @@ class App extends Component {
     this.updateLocation = this.updateLocation.bind(this);
   }
 
-  fetchData() {
+  // componentDidMount() {
+  //   if (!this.retrieveLastLocation()) {
+  //     console.log('no ls')
+  //   } else {
+  //     fetchData()
+  //   }
+  // }
+
+  fetchData(location) {
     fetch(
-      `http://api.wunderground.com/api/${apiKey}/geolookup/conditions/hourly/forecast10day/q/${
-        this.state.state
-      }/${this.state.city}.json`
+      `http://api.wunderground.com/api/${apiKey}/geolookup/conditions/hourly/forecast10day/q/${location}.json`
     )
       .then(response => response.json())
       .then(response => {
@@ -40,21 +45,21 @@ class App extends Component {
           hourlyForecast: cityCall.hourly_forecast,
           dailyForecast: cityCall.forecast
         });
-      })
-      // .catch(err => {
-      //   throw new Error(err);
-      // });
+      });
+    // .catch(err => {
+    //   throw new Error(err);
+    // });
   }
 
   //encodeURIComponent()
 
   updateLocation(location) {
-    location = location.split(",");
+    location = location.split(",")
+                       .map(loc => loc.trim());
     this.setState({
-      city: location[0],
-      state: location[1]
+      location: `${location[0]}, ${location[1]}`
     });
-    this.fetchData();
+    this.fetchData(`${location[1]}/${location[0]}`);
     this.storeLastLocation(location);
   }
 
@@ -64,9 +69,9 @@ class App extends Component {
     }));
   }
 
-  retrieveLastLocation = () => {
-    return JSON.parse(localStorage.getItem("location")) || "";
-  };
+  retrieveLastLocation() {
+    return JSON.parse(localStorage.getItem("location"));
+  }
 
   storeLastLocation = location => {
     let stringified = JSON.stringify(location);

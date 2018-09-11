@@ -40,7 +40,11 @@ class Search extends Component {
             <button className="submit-button"
               onClick={event => {
                 event.preventDefault();
-                this.props.updateLocation(this.state.value);
+                if (this.state.value.match(/^\d+$/)) {
+                  console.log('asdf')
+                } else {
+                  this.props.updateLocation(this.state.value);
+                }
               }}
             >
               <FontAwesomeIcon icon="search" />
