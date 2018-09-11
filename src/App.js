@@ -3,7 +3,6 @@ import Search from "./Components/Search";
 import CurrentWeather from "./Components/CurrentWeather";
 import SevenHour from "./Components/SevenHour";
 import TenDay from "./Components/TenDay";
-//import Welcome from "./Components/Welcome";
 import data from "./mockAPI.js";
 import apiConfig from "./apiKey";
 import "./App.css";
@@ -15,69 +14,84 @@ class App extends Component {
     super();
 
     this.state = {
-      city: "",
-      state: "",
+      location: [],
       currentObservation: data.current_observation,
       hourlyForecast: data.hourly_forecast,
       dailyForecast: data.forecast,
       isToggleOn: true
     };
-    this.handleClick = this.handleClick.bind(this);
-    this.updateLocation = this.updateLocation.bind(this);
   }
 
-  fetchData() {
+  componentDidMount() {
+    if (this.retrieveLastLocation()) {
+      let location = this.retrieveLastLocation();
+      this.fetchData(`${location[1]}/${location[0]}`);
+    } else {
+      this.fetchData('autoip');
+    }
+  }
+
+  fetchData(location) {
     fetch(
-      `http://api.wunderground.com/api/${apiKey}/geolookup/conditions/hourly/forecast10day/q/${
-        this.state.state
-      }/${this.state.city}.json`
+      `http://api.wunderground.com/api/${apiKey}/geolookup/conditions/hourly/forecast10day/q/${location}.json`
     )
       .then(response => response.json())
       .then(response => {
-        let cityCall = response;
         this.setState({
-          currentObservation: cityCall.current_observation,
-          hourlyForecast: cityCall.hourly_forecast,
-          dailyForecast: cityCall.forecast
+          currentObservation: response.current_observation,
+          hourlyForecast: response.hourly_forecast,
+          dailyForecast: response.forecast
         });
       })
-      // .catch(err => {
-      //   throw new Error(err);
-      // });
+      .catch(err => {
+        //throw new Error(err);
+      });
   }
 
-  //encodeURIComponent()
+  fetchDataZipCode(zip) {
+    fetch(`http://api.wunderground.com/api/${apiKey}/geolookup/q/${zip}.json`)
+      .then(response => response.json())
+      .then(response => {
+        let cityCall = response.location.city + ", " + response.location.state;
+        this.updateLocation(cityCall);
+      })
+      .catch(err => {
+        //throw new Error(error);
+      });
+  }
 
-  updateLocation(location) {
-    location = location.split(",");
+  updateLocation = location => {
+    location = location.split(",").map(loc => loc.trim());
     this.setState({
-      city: location[0],
-      state: location[1]
+      location: [location[0], location[1]]
     });
-    this.fetchData();
+    this.fetchData(`${location[1]}/${location[0]}`);
     this.storeLastLocation(location);
-  }
+  };
 
-  handleClick() {
+  handleClick = () => {
     this.setState(state => ({
       isToggleOn: !state.isToggleOn
     }));
+  };
+
+  retrieveLastLocation() {
+    return JSON.parse(localStorage.getItem("location"));
   }
 
-  retrieveLastLocation = () => {
-    return JSON.parse(localStorage.getItem("location")) || "";
-  };
-
-  storeLastLocation = location => {
+  storeLastLocation(location) {
     let stringified = JSON.stringify(location);
     localStorage.setItem("location", stringified);
-  };
+  }
 
   render() {
     if (this.state.isToggleOn) {
       return (
         <div>
-          <Search updateLocation={this.updateLocation} />
+          <Search
+            updateLocation={this.updateLocation}
+            fetchDataZipCode={this.fetchDataZipCode}
+          />
           <CurrentWeather currentObservation={this.state.currentObservation} />
           <button className="toggle-button" onClick={this.handleClick}>
             {this.state.isToggleOn ? "HOURLY" : "DAILY"}
@@ -88,7 +102,10 @@ class App extends Component {
     } else {
       return (
         <div>
-          <Search updateLocation={this.updateLocation} />
+          <Search
+            updateLocation={this.updateLocation}
+            fetchDataZipCode={this.fetchDataZipCode}
+          />
           <CurrentWeather currentObservation={this.state.currentObservation} />
           <button className="toggle-button" onClick={this.handleClick}>
             {this.state.isToggleOn ? "HOURLY" : "DAILY"}
