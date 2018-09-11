@@ -40,11 +40,11 @@ class Search extends Component {
             <button className="submit-button"
               onClick={event => {
                 event.preventDefault();
-                if (this.state.value.match(/^\d+$/)) {
-                  this.props.fetchDataZipCode(this.state.value)
-                } else {
-                  this.props.updateLocation(this.state.value);
-                }
+                let input = this.state.value;
+
+                input.match(/^\d+$/) 
+                ? this.props.fetchDataZipCode(input)
+                : this.props.fetchDataZipCode(input);
               }}
             >
               <FontAwesomeIcon icon="search" />

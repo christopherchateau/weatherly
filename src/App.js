@@ -51,9 +51,8 @@ class App extends Component {
     fetch(`http://api.wunderground.com/api/${apiKey}/geolookup/q/${zip}.json`)
       .then(response => response.json())
       .then(response => {
-        let cityCall = `${response.location.state}/${response.location.city}`;
-        console.log(cityCall)
-        //this.updateLocation(cityCall);
+        let cityCall = response.location.city + ", " + response.location.state;
+        this.updateLocation(cityCall);
       })
       .catch(err => {
         //throw new Error(error);
@@ -66,7 +65,6 @@ class App extends Component {
       location: `${location[0]}, ${location[1]}`
     });
     this.fetchData(`${location[1]}/${location[0]}`);
-    console.log(`${location[1]}/${location[0]}`)
     this.storeLastLocation(location);
   }
 

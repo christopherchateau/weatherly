@@ -6,11 +6,10 @@ class CurrentWeather extends Component {
     super();
 }
 render() {
-  let wind = this.props.currentObservation.wind_string;
-  wind = wind
-          .split(' ')
-          .map( str => str.match(/[\d.]/) ? parseInt(str).toFixed(0): str)
-          .join(' ');
+  let wind = this.props.currentObservation.wind_string
+                 .split(' ')
+                 .map( str => str.match(/[\d.]/) ? parseInt(str).toFixed(0): str)
+                 .join(' ');
              
     return (
       <div className="current-weather">
