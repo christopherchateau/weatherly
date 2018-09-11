@@ -13,11 +13,11 @@ class Search extends Component {
   constructor(props) {
     super(props);
     this.state = { value: "" };
-    this.handleChange = this.handleChange.bind(this);
+    // this.handleChange = this.handleChange.bind(this);
   }
-  handleChange(event) {
-    this.setState({ value: event.target.value });
-  }
+  // handleChange(event) {
+  //   this.setState({ value: event.target.value });
+  // }
   render() {
     return (
       <div className="title-wrapper">
@@ -41,7 +41,7 @@ class Search extends Component {
               onClick={event => {
                 event.preventDefault();
                 if (this.state.value.match(/^\d+$/)) {
-                  console.log('asdf')
+                  console.log('zipcode')
                 } else {
                   this.props.updateLocation(this.state.value);
                 }

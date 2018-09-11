@@ -38,6 +38,12 @@ function Card(props) {
     hour > 12 
       ? (hour = `${hour - 12} pm`) 
       : (hour = `${hour} am`);
+
+    let chanceOfRain = props.pop;
+
+    chanceOfRain == 0
+      ? (chanceOfRain = "")
+      : (chanceOfRain = `Chance of Rain ${chanceOfRain} %`);
       
     return (
         <div className="card">
@@ -45,15 +51,10 @@ function Card(props) {
           <FontAwesomeIcon icon={icons[props.icon]} />
           <h1>{Math.round(props.temp.english)}° F</h1>
           <p>{props.condition}</p>
+          <p>{chanceOfRain}</p>
         </div>
     );
   } else {
-    let chanceOfRain = props.pop;
-
-    chanceOfRain === 0
-      ? (chanceOfRain = "")
-      : (chanceOfRain = `Chance of Rain ${chanceOfRain} %`);
-
     return (
         <div className="card">
           <h1>{props.date.weekday.slice(0, 3)}</h1>

@@ -8,7 +8,7 @@ class CurrentWeather extends Component {
 render() {
     return (
       <div className="current-weather">
-        <h1 className="city-name">{this.props.currentObservation.display_location.full}</h1>
+        <h1 className="city-name">{this.props.currentObservation.display_location.full || {}}</h1>
         <h3 className="temperature">{Math.round(this.props.currentObservation.temp_f)}°</h3>
         <h3>Conditions: {this.props.currentObservation.weather}</h3>
         <h3>Feels Like: {Math.round(this.props.currentObservation.feelslike_f)}° F</h3>

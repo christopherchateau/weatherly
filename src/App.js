@@ -24,8 +24,7 @@ class App extends Component {
     this.updateLocation = this.updateLocation.bind(this);
   }
   componentDidMount() {
-    if (!this.retrieveLastLocation()) {
-    } else {
+    if (this.retrieveLastLocation()) {
       let location = this.retrieveLastLocation();
       this.fetchData(`${location[1]}/${location[0]}`);
     }
@@ -42,16 +41,15 @@ class App extends Component {
           currentObservation: cityCall.current_observation,
           hourlyForecast: cityCall.hourly_forecast,
           dailyForecast: cityCall.forecast
-        })
+        });
       })
-    .catch(err => {
-      throw new Error(err);
-    });
+      .catch(err => {
+        throw new Error(err);
+      });
   }
 
   updateLocation(location) {
-    location = location.split(",")
-                       .map(loc => loc.trim());
+    location = location.split(",").map(loc => loc.trim());
     this.setState({
       location: `${location[0]}, ${location[1]}`
     });
