@@ -44,7 +44,19 @@ class App extends Component {
         });
       })
       .catch(err => {
-        throw new Error(err);
+        //throw new Error(err);
+      });
+  }
+  fetchDataZipCode(zip) {
+    fetch(`http://api.wunderground.com/api/${apiKey}/geolookup/q/${zip}.json`)
+      .then(response => response.json())
+      .then(response => {
+        let cityCall = `${response.location.state}/${response.location.city}`;
+        console.log(cityCall)
+        //this.updateLocation(cityCall);
+      })
+      .catch(err => {
+        //throw new Error(error);
       });
   }
 
@@ -54,6 +66,7 @@ class App extends Component {
       location: `${location[0]}, ${location[1]}`
     });
     this.fetchData(`${location[1]}/${location[0]}`);
+    console.log(`${location[1]}/${location[0]}`)
     this.storeLastLocation(location);
   }
 
@@ -76,7 +89,10 @@ class App extends Component {
     if (this.state.isToggleOn) {
       return (
         <div>
-          <Search updateLocation={this.updateLocation} />
+          <Search
+            updateLocation={this.updateLocation}
+            fetchDataZipCode={this.fetchDataZipCode}
+          />
           <CurrentWeather currentObservation={this.state.currentObservation} />
           <button className="toggle-button" onClick={this.handleClick}>
             {this.state.isToggleOn ? "HOURLY" : "DAILY"}
@@ -87,7 +103,10 @@ class App extends Component {
     } else {
       return (
         <div>
-          <Search updateLocation={this.updateLocation} />
+          <Search
+            updateLocation={this.updateLocation}
+            fetchDataZipCode={this.fetchDataZipCode}
+          />
           <CurrentWeather currentObservation={this.state.currentObservation} />
           <button className="toggle-button" onClick={this.handleClick}>
             {this.state.isToggleOn ? "HOURLY" : "DAILY"}

@@ -41,7 +41,7 @@ class Search extends Component {
               onClick={event => {
                 event.preventDefault();
                 if (this.state.value.match(/^\d+$/)) {
-                  console.log('zipcode')
+                  this.props.fetchDataZipCode(this.state.value)
                 } else {
                   this.props.updateLocation(this.state.value);
                 }

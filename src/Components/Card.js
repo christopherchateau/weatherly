@@ -19,7 +19,6 @@ function Card(props) {
     hazy: 'cloud',
     chancerain: 'umbrella',
     rain: 'umbrella',
-    chancerain: 'umbrella',
     chancetstorms: 'bolt',
     tstorms: 'bolt',
     snow: 'snowflake',
