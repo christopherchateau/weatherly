@@ -3,7 +3,7 @@ import "./Search.css";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import cityStateList from '../cityStateList';
+import cityStateList from "../cityStateList";
 
 library.add(faSearch);
 
@@ -37,14 +37,15 @@ class Search extends Component {
                 });
               }}
             />
-            <button className="submit-button"
+            <button
+              className="submit-button"
               onClick={event => {
                 event.preventDefault();
                 let input = this.state.value;
 
-                input.match(/^\d+$/) 
-                ? this.props.fetchDataZipCode(input)
-                : this.props.fetchDataZipCode(input);
+                input.match(/^\d+$/)
+                  ? this.props.fetchDataZipCode(input)
+                  : this.props.fetchDataZipCode(input);
               }}
             >
               <FontAwesomeIcon icon="search" />

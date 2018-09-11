@@ -20,9 +20,8 @@ class App extends Component {
       dailyForecast: data.forecast,
       isToggleOn: true
     };
-    //this.handleClick = this.handleClick.bind(this);
-    //this.updateLocation = this.updateLocation.bind(this);
   }
+
   componentDidMount() {
     if (this.retrieveLastLocation()) {
       let location = this.retrieveLastLocation();
@@ -32,7 +31,8 @@ class App extends Component {
 
   fetchData(location) {
     fetch(
-      `http://api.wunderground.com/api/${apiKey}/geolookup/conditions/hourly/forecast10day/q/${location}.json`)
+      `http://api.wunderground.com/api/${apiKey}/geolookup/conditions/hourly/forecast10day/q/${location}.json`
+    )
       .then(response => response.json())
       .then(response => {
         this.setState({
@@ -45,6 +45,7 @@ class App extends Component {
         //throw new Error(err);
       });
   }
+
   fetchDataZipCode(zip) {
     fetch(`http://api.wunderground.com/api/${apiKey}/geolookup/q/${zip}.json`)
       .then(response => response.json())
@@ -57,29 +58,29 @@ class App extends Component {
       });
   }
 
-  updateLocation = (location) => {
+  updateLocation = location => {
     location = location.split(",").map(loc => loc.trim());
     this.setState({
       location: [location[0], location[1]]
     });
     this.fetchData(`${location[1]}/${location[0]}`);
     this.storeLastLocation(location);
-  }
+  };
 
   handleClick = () => {
     this.setState(state => ({
       isToggleOn: !state.isToggleOn
     }));
-  }
+  };
 
   retrieveLastLocation() {
     return JSON.parse(localStorage.getItem("location"));
   }
 
-  storeLastLocation = location => {
+  storeLastLocation(location) {
     let stringified = JSON.stringify(location);
     localStorage.setItem("location", stringified);
-  };
+  }
 
   render() {
     if (this.state.isToggleOn) {
