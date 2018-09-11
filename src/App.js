@@ -3,7 +3,6 @@ import Search from "./Components/Search";
 import CurrentWeather from "./Components/CurrentWeather";
 import SevenHour from "./Components/SevenHour";
 import TenDay from "./Components/TenDay";
-//import Welcome from "./Components/Welcome";
 import data from "./mockAPI.js";
 import apiConfig from "./apiKey";
 import "./App.css";
@@ -24,14 +23,13 @@ class App extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.updateLocation = this.updateLocation.bind(this);
   }
-
-  // componentDidMount() {
-  //   if (!this.retrieveLastLocation()) {
-  //     console.log('no ls')
-  //   } else {
-  //     fetchData()
-  //   }
-  // }
+  componentDidMount() {
+    if (!this.retrieveLastLocation()) {
+    } else {
+      let location = this.retrieveLastLocation();
+      this.fetchData(`${location[1]}/${location[0]}`);
+    }
+  }
 
   fetchData(location) {
     fetch(
@@ -44,14 +42,12 @@ class App extends Component {
           currentObservation: cityCall.current_observation,
           hourlyForecast: cityCall.hourly_forecast,
           dailyForecast: cityCall.forecast
-        });
-      });
-    // .catch(err => {
-    //   throw new Error(err);
-    // });
+        })
+      })
+    .catch(err => {
+      throw new Error(err);
+    });
   }
-
-  //encodeURIComponent()
 
   updateLocation(location) {
     location = location.split(",")
