@@ -14,14 +14,14 @@ class App extends Component {
     super();
 
     this.state = {
-      location: "",
+      location: [],
       currentObservation: data.current_observation,
       hourlyForecast: data.hourly_forecast,
       dailyForecast: data.forecast,
       isToggleOn: true
     };
-    this.handleClick = this.handleClick.bind(this);
-    this.updateLocation = this.updateLocation.bind(this);
+    //this.handleClick = this.handleClick.bind(this);
+    //this.updateLocation = this.updateLocation.bind(this);
   }
   componentDidMount() {
     if (this.retrieveLastLocation()) {
@@ -32,15 +32,13 @@ class App extends Component {
 
   fetchData(location) {
     fetch(
-      `http://api.wunderground.com/api/${apiKey}/geolookup/conditions/hourly/forecast10day/q/${location}.json`
-    )
+      `http://api.wunderground.com/api/${apiKey}/geolookup/conditions/hourly/forecast10day/q/${location}.json`)
       .then(response => response.json())
       .then(response => {
-        let cityCall = response;
         this.setState({
-          currentObservation: cityCall.current_observation,
-          hourlyForecast: cityCall.hourly_forecast,
-          dailyForecast: cityCall.forecast
+          currentObservation: response.current_observation,
+          hourlyForecast: response.hourly_forecast,
+          dailyForecast: response.forecast
         });
       })
       .catch(err => {
@@ -59,16 +57,16 @@ class App extends Component {
       });
   }
 
-  updateLocation(location) {
+  updateLocation = (location) => {
     location = location.split(",").map(loc => loc.trim());
     this.setState({
-      location: `${location[0]}, ${location[1]}`
+      location: [location[0], location[1]]
     });
     this.fetchData(`${location[1]}/${location[0]}`);
     this.storeLastLocation(location);
   }
 
-  handleClick() {
+  handleClick = () => {
     this.setState(state => ({
       isToggleOn: !state.isToggleOn
     }));
