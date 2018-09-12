@@ -6,6 +6,7 @@ import TenDay from "./Components/TenDay";
 //import data from "./mockAPI.js";
 import apiConfig from "./apiKey";
 import "./App.css";
+import Welcome from './Components/Welcome'
 
 const apiKey = apiConfig.weatherUndergroundApiKey;
 
@@ -98,6 +99,7 @@ class App extends Component {
     if (!this.state.location) {
       return (
         <div>
+          <Welcome />
           <Search
             updateLocation={this.updateLocation}
             fetchDataZipCode={this.fetchDataZipCode}
@@ -114,6 +116,7 @@ class App extends Component {
       if (this.state.isToggleOn) {
         return (
           <div>
+            <Welcome />
             <Search
               updateLocation={this.updateLocation}
               fetchDataZipCode={this.fetchDataZipCode}
@@ -131,6 +134,7 @@ class App extends Component {
       } else {
         return (
           <div>
+            <Welcome />
             <Search
               updateLocation={this.updateLocation}
               fetchDataZipCode={this.fetchDataZipCode}
