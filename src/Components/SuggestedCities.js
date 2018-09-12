@@ -1,15 +1,19 @@
 import React from "react";
-
+import "./SuggestedCities.css";
 
 function SuggestedCities(props) {
 let { suggestedCities, handleSuggestionClick } = props;
   console.log(suggestedCities)
   handleSuggestionClick()
-
   if (suggestedCities.length > 0) {
      return (
-      //map over suggestedCities and append to a list on browser
-      <div></div>
+      <div>
+        <ul class="drop-down-list">
+          {suggestedCities.map( node => {
+            return <li>{node.finalWord}</li>
+          })}
+        </ul>
+      </div>
       );
   } else {
     return (
