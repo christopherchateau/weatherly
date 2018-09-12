@@ -1,17 +1,16 @@
 import React from "react";
 import { shallow, mount } from "enzyme";
-import CurrentWeather from "../Components/CurrentWeather";
+import SevenHour from "../Components/SuggestedCities";
 
-describe("CurrentWeather component", () => {
+describe("SuggestedCities component", () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<CurrentWeather />);
+    wrapper = shallow(<SuggestedCities />);
     localStorage.clear();
   });
 
   it.skip("should be a thing", () => {
     expect(wrapper).toBeDefined();
   });
-
 });

@@ -12,7 +12,6 @@ const apiKey = apiConfig.weatherUndergroundApiKey;
 class App extends Component {
   constructor() {
     super();
-
     this.state = {
       location: [],
       currentObservation: data.current_observation,
@@ -21,8 +20,9 @@ class App extends Component {
       isToggleOn: true
     };
   }
-
+  
   componentDidMount() {
+    console.log(this.state.currentObservation)
     if (this.retrieveLastLocation()) {
       let location = JSON.parse(this.retrieveLastLocation());
       this.fetchData(`${location[1]}/${location[0]}`);

@@ -5,9 +5,12 @@ import TenDay from "../Components/TenDay";
 describe("TenDay component", () => {
   let wrapper;
 
-  beforeEach(() => {});
+  beforeEach(() => {
+    wrapper = shallow(<TenDay />);
+    localStorage.clear();
+  });
 
-  it("should be a thing", () => {
-    //expect(wrapper).toBeDefined();
+  it.skip("should be a thing", () => {
+    expect(wrapper).toBeDefined();
   });
 });

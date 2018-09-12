@@ -50,7 +50,8 @@ class Search extends Component {
   }
 
   handleSuggestionClick(value) {
-    //console.log(this.state.value)
+    //this.setState({ value: value });
+    this.props.fetchDataZipCode(value);
   }
 
   render() {

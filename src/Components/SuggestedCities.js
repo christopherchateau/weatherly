@@ -3,22 +3,26 @@ import "./SuggestedCities.css";
 
 function SuggestedCities(props) {
   let { suggestedCities, handleSuggestionClick } = props;
-  //console.log(suggestedCities)
-  handleSuggestionClick();
+  //handleSuggestionClick();
   if (suggestedCities.length > 0) {
     return (
       <div>
-        <ul class="drop-down-list">
-          {suggestedCities.map(node => {
-            return <li>{node.finalWord}</li>;
+        <ul className="drop-down-list">
+          {suggestedCities.map((node, ind) => {
+            return (
+              <li
+                key={ind}
+                onClick={e => handleSuggestionClick(e.target.innerText)}
+              >
+                {node.finalWord}
+              </li>
+            );
           })}
         </ul>
       </div>
     );
   } else {
-    return (
-      <div /> //return an empty div if no cities are in the list
-    );
+    return <div></div>;
   }
 }
 
