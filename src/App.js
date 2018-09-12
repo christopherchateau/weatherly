@@ -98,7 +98,15 @@ class App extends Component {
     if (!this.state.location) {
       return (
         <div>
-          <p>error</p>
+          <Search
+            updateLocation={this.updateLocation}
+            fetchDataZipCode={this.fetchDataZipCode}
+          />
+          <h4>
+            Error: Location Not Found <br />
+            Please enter Zip Code or City, State<br />
+            Example: 'Denver, CO'
+          </h4>
         </div>
       );
     }

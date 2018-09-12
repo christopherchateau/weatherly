@@ -30,3 +30,13 @@
   color: white;
   box-shadow: rgba(104, 100, 151, 0.5) 0 80px 0px 2px inset;
 }
+
+h4 {
+  line-height: 2;
+  margin: auto;
+  border: 8px white solid;
+  font-family: 'Roboto', sans-serif;
+  font-size: 42px;
+  width: 800px;
+  border-radius: 50px;
+}
