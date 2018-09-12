@@ -2,8 +2,7 @@ import React from "react";
 import "./SuggestedCities.css";
 
 function SuggestedCities(props) {
-  let { suggestedCities, handleSuggestionClick } = props;
-  //handleSuggestionClick();
+  let { suggestedCities, handleSuggestionClick } = props;;
   if (suggestedCities.length > 0) {
     return (
       <div>

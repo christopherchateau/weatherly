@@ -31,7 +31,12 @@ class Search extends Component {
 
   handleInputChange(event) {
     const value = event.target.value;
-    const suggestedCities = this.generatedSuggestedCities(value);
+    let suggestedCities;
+
+    value.length 
+      ? suggestedCities = this.generatedSuggestedCities(value)
+      : suggestedCities = [];
+      
     this.setState({
       value,
       suggestedCities
