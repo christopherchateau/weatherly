@@ -3,13 +3,12 @@ import Search from "./Components/Search";
 import CurrentWeather from "./Components/CurrentWeather";
 import SevenHour from "./Components/SevenHour";
 import TenDay from "./Components/TenDay";
-//import data from "./mockAPI.js";
 import apiConfig from "./apiKey";
 import "./App.css";
 
 const apiKey = apiConfig.weatherUndergroundApiKey;
 
-class App extends Component {
+export default class App extends Component {
   constructor() {
     super();
     this.state = {
@@ -22,7 +21,7 @@ class App extends Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     if (this.retrieveLastLocation()) {
       let location = JSON.parse(this.retrieveLastLocation());
       this.fetchData(`${location[1]}/${location[0]}`);
@@ -31,7 +30,7 @@ class App extends Component {
     }
   }
 
-  fetchData = location => {
+fetchData = location => {
     fetch(
       `http://api.wunderground.com/api/${apiKey}/geolookup/conditions/hourly/forecast10day/q/${location}.json`
     )
@@ -64,10 +63,10 @@ class App extends Component {
         }
         let cityCall = response.location.city + ", " + response.location.state;
         this.updateLocation(cityCall);
-      });
-    // .catch(err => {
-    //   throw new Error(err);
-    // });
+      })
+    .catch(err => {
+      throw new Error(err);
+    });
   };
 
   updateLocation = location => {
@@ -151,5 +150,3 @@ class App extends Component {
     return <div />;
   }
 }
-
-export default App;
