@@ -14,7 +14,7 @@
 .card {
   width: 100%;
   border: 5px solid white;
-  height: 200px;
+  height: 180px;
   padding: 10px;
   border-radius: 10px;
   margin-right: 10px;
@@ -22,19 +22,19 @@
 }
 
 .card h1 {
-  font-size: 25px;
+  font-size: 20px;
   opacity: 0.8;
 }
 
 .card h3 {
-  font-size: 20px;
+  font-size: 15px;
   line-height: 1.5em;
   opacity: 0.8;
 }
 
 .card p {
   margin-top: 10px;
-  font-size: 14px;
+  font-size: 12px;
   opacity: 0.8;
 }
 
