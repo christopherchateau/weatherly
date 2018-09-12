@@ -24,7 +24,7 @@ class App extends Component {
 
   componentDidMount() {
     if (this.retrieveLastLocation()) {
-      let location = this.retrieveLastLocation();
+      let location = JSON.parse(this.retrieveLastLocation());
       this.fetchData(`${location[1]}/${location[0]}`);
     } else {
       this.fetchData('autoip');
@@ -76,7 +76,7 @@ class App extends Component {
   };
 
   retrieveLastLocation() {
-    return JSON.parse(localStorage.getItem("location"));
+    return localStorage.getItem("location");
   }
 
   storeLastLocation(location) {
