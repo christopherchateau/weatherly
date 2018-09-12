@@ -3,7 +3,7 @@ import Search from "./Components/Search";
 import CurrentWeather from "./Components/CurrentWeather";
 import SevenHour from "./Components/SevenHour";
 import TenDay from "./Components/TenDay";
-import data from "./mockAPI.js";
+//import data from "./mockAPI.js";
 import apiConfig from "./apiKey";
 import "./App.css";
 
@@ -15,14 +15,14 @@ class App extends Component {
     this.state = {
       location: [],
       currentConditions: "",
-      currentObservation: data.current_observation,
-      hourlyForecast: data.hourly_forecast,
-      dailyForecast: data.forecast,
+      currentObservation: null,
+      hourlyForecast: null,
+      dailyForecast: null,
       isToggleOn: true
     };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     if (this.retrieveLastLocation()) {
       let location = JSON.parse(this.retrieveLastLocation());
       this.fetchData(`${location[1]}/${location[0]}`);
@@ -31,12 +31,16 @@ class App extends Component {
     }
   }
 
-  fetchData(location) {
+  fetchData = location => {
     fetch(
       `http://api.wunderground.com/api/${apiKey}/geolookup/conditions/hourly/forecast10day/q/${location}.json`
     )
       .then(response => response.json())
       .then(response => {
+        if (response.response.error) {
+          this.setState({ location: [] });
+          return;
+        }
         this.setState({
           currentConditions:
             response.forecast.txt_forecast.forecastday["0"].fcttext,
@@ -46,21 +50,25 @@ class App extends Component {
         });
       })
       .catch(err => {
-        //throw new Error(err);
+        throw new Error(err);
       });
-  }
+  };
 
-  fetchDataZipCode(zip) {
+  fetchDataZipCode = zip => {
     fetch(`http://api.wunderground.com/api/${apiKey}/geolookup/q/${zip}.json`)
       .then(response => response.json())
       .then(response => {
+        if (response.response.error) {
+          this.setState({ location: null });
+          return;
+        }
         let cityCall = response.location.city + ", " + response.location.state;
         this.updateLocation(cityCall);
-      })
-      .catch(err => {
-        //throw new Error(error);
       });
-  }
+    // .catch(err => {
+    //   throw new Error(err);
+    // });
+  };
 
   updateLocation = location => {
     location = location.split(",").map(loc => loc.trim());
@@ -87,41 +95,52 @@ class App extends Component {
   }
 
   render() {
-    if (this.state.isToggleOn) {
+    if (!this.state.location) {
       return (
         <div>
-          <Search
-            updateLocation={this.updateLocation}
-            fetchDataZipCode={this.fetchDataZipCode}
-          />
-          <CurrentWeather
-            currentObservation={this.state.currentObservation}
-            currentConditions={this.state.currentConditions}
-          />
-          <button className="toggle-button" onClick={this.handleClick}>
-            {this.state.isToggleOn ? "HOURLY" : "DAILY"}
-          </button>
-          <SevenHour hourlyForecast={this.state.hourlyForecast} />
-        </div>
-      );
-    } else {
-      return (
-        <div>
-          <Search
-            updateLocation={this.updateLocation}
-            fetchDataZipCode={this.fetchDataZipCode}
-          />
-          <CurrentWeather
-            currentObservation={this.state.currentObservation}
-            currentConditions={this.state.currentConditions}
-          />
-          <button className="toggle-button" onClick={this.handleClick}>
-            {this.state.isToggleOn ? "HOURLY" : "DAILY"}
-          </button>
-          <TenDay dailyForecast={this.state.dailyForecast} />
+          <p>error</p>
         </div>
       );
     }
+    if (this.state.currentObservation) {
+      if (this.state.isToggleOn) {
+        return (
+          <div>
+            <Search
+              updateLocation={this.updateLocation}
+              fetchDataZipCode={this.fetchDataZipCode}
+            />
+            <CurrentWeather
+              currentObservation={this.state.currentObservation}
+              currentConditions={this.state.currentConditions}
+            />
+            <button className="toggle-button" onClick={this.handleClick}>
+              {this.state.isToggleOn ? "HOURLY" : "DAILY"}
+            </button>
+            <SevenHour hourlyForecast={this.state.hourlyForecast} />
+          </div>
+        );
+      } else {
+        return (
+          <div>
+            <Search
+              updateLocation={this.updateLocation}
+              fetchDataZipCode={this.fetchDataZipCode}
+            />
+            <CurrentWeather
+              currentObservation={this.state.currentObservation}
+              currentConditions={this.state.currentConditions}
+            />
+            <button className="toggle-button" onClick={this.handleClick}>
+              {this.state.isToggleOn ? "HOURLY" : "DAILY"}
+            </button>
+            <TenDay dailyForecast={this.state.dailyForecast} />
+          </div>
+        );
+      }
+    } else {
+    }
+    return <div />;
   }
 }
 

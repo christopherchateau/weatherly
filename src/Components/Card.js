@@ -47,7 +47,7 @@ function Card(props) {
 
     chanceOfRain == 0
       ? (chanceOfRain = "")
-      : (chanceOfRain = `Chance of Rain ${chanceOfRain} %`);
+      : (chanceOfRain = `Chance of Rain ${chanceOfRain}%`);
 
     return (
       <div className="card">
