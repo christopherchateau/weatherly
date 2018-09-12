@@ -8,7 +8,6 @@ import { Trie } from "@tmcmeans/autocomplete";
 import SuggestedCities from "./SuggestedCities";
 
 library.add(faSearch);
-
 let autoComplete = new Trie();
 
 class Search extends Component {
@@ -33,10 +32,10 @@ class Search extends Component {
     const value = event.target.value;
     let suggestedCities;
 
-    value.length 
-      ? suggestedCities = this.generatedSuggestedCities(value)
-      : suggestedCities = [];
-      
+    value.length
+      ? (suggestedCities = this.generatedSuggestedCities(value))
+      : (suggestedCities = []);
+
     this.setState({
       value,
       suggestedCities
@@ -55,7 +54,6 @@ class Search extends Component {
   }
 
   handleSuggestionClick(value) {
-    //this.setState({ value: value });
     this.props.fetchDataZipCode(value);
   }
 

@@ -14,20 +14,20 @@ class App extends Component {
     super();
     this.state = {
       location: [],
+      currentConditions: "",
       currentObservation: data.current_observation,
       hourlyForecast: data.hourly_forecast,
       dailyForecast: data.forecast,
       isToggleOn: true
     };
   }
-  
+
   componentDidMount() {
-    console.log(this.state.currentObservation)
     if (this.retrieveLastLocation()) {
       let location = JSON.parse(this.retrieveLastLocation());
       this.fetchData(`${location[1]}/${location[0]}`);
     } else {
-      this.fetchData('autoip');
+      this.fetchData("autoip");
     }
   }
 
@@ -38,6 +38,8 @@ class App extends Component {
       .then(response => response.json())
       .then(response => {
         this.setState({
+          currentConditions:
+            response.forecast.txt_forecast.forecastday["0"].fcttext,
           currentObservation: response.current_observation,
           hourlyForecast: response.hourly_forecast,
           dailyForecast: response.forecast
@@ -92,7 +94,10 @@ class App extends Component {
             updateLocation={this.updateLocation}
             fetchDataZipCode={this.fetchDataZipCode}
           />
-          <CurrentWeather currentObservation={this.state.currentObservation} />
+          <CurrentWeather
+            currentObservation={this.state.currentObservation}
+            currentConditions={this.state.currentConditions}
+          />
           <button className="toggle-button" onClick={this.handleClick}>
             {this.state.isToggleOn ? "HOURLY" : "DAILY"}
           </button>
@@ -106,7 +111,10 @@ class App extends Component {
             updateLocation={this.updateLocation}
             fetchDataZipCode={this.fetchDataZipCode}
           />
-          <CurrentWeather currentObservation={this.state.currentObservation} />
+          <CurrentWeather
+            currentObservation={this.state.currentObservation}
+            currentConditions={this.state.currentConditions}
+          />
           <button className="toggle-button" onClick={this.handleClick}>
             {this.state.isToggleOn ? "HOURLY" : "DAILY"}
           </button>
