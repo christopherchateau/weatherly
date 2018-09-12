@@ -15,9 +15,9 @@ class App extends Component {
     this.state = {
       location: [],
       currentConditions: "",
-      currentObservation: null,
-      hourlyForecast: null,
-      dailyForecast: null,
+      currentObservation: "",
+      hourlyForecast: "",
+      dailyForecast: "",
       isToggleOn: true
     };
   }
