@@ -62,7 +62,7 @@ class Search extends Component {
       <div className="title-wrapper">
         <h1 className="title">weathrly</h1>
         <div className="search-bar-wrapper">
-          <form>
+          <form className="search-form">
             <input
               type="text"
               className="search-field"
@@ -72,16 +72,16 @@ class Search extends Component {
               value={this.state.value}
               onChange={e => this.handleInputChange(e)}
             />
-            <SuggestedCities
-              suggestedCities={this.state.suggestedCities}
-              handleSuggestionClick={this.handleSuggestionClick}
-            />
             <button
               className="submit-button"
               onClick={e => this.handleSearch(e)}
             >
-              <FontAwesomeIcon icon="search" />
+              search
             </button>
+            <SuggestedCities
+              suggestedCities={this.state.suggestedCities}
+              handleSuggestionClick={this.handleSuggestionClick}
+            />
           </form>
         </div>
       </div>

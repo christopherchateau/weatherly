@@ -1,0 +1,14 @@
+.welcome {
+  display: block;
+  margin: 0 auto;
+  font-family: "Pacifico", cursive;
+  font-size: 80px;
+  height: 130px;
+  padding: 0 20px;
+  border-radius: 80px;
+  width: 400px;
+  letter-spacing: 5px;
+}
+
+
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,500");

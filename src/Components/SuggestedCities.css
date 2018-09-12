@@ -2,10 +2,9 @@
   border-radius: 80px;
   color: white;
   height: 60px;
-  margin-right: 10px;
-  margin-top: 10px;
+  margin: 10px 30px 0 auto;
   overflow: auto;
-  width: 350px;
+  width: 200px;
 }
 
 li {

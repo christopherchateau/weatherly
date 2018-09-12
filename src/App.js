@@ -5,6 +5,7 @@ import SevenHour from "./Components/SevenHour";
 import TenDay from "./Components/TenDay";
 import apiConfig from "./apiKey";
 import "./App.css";
+import Welcome from './Components/Welcome'
 
 const apiKey = apiConfig.weatherUndergroundApiKey;
 
@@ -97,6 +98,7 @@ fetchData = location => {
     if (!this.state.location) {
       return (
         <div>
+          <Welcome />
           <Search
             updateLocation={this.updateLocation}
             fetchDataZipCode={this.fetchDataZipCode}
@@ -113,6 +115,7 @@ fetchData = location => {
       if (this.state.isToggleOn) {
         return (
           <div>
+            <Welcome />
             <Search
               updateLocation={this.updateLocation}
               fetchDataZipCode={this.fetchDataZipCode}
@@ -130,6 +133,7 @@ fetchData = location => {
       } else {
         return (
           <div>
+            <Welcome />
             <Search
               updateLocation={this.updateLocation}
               fetchDataZipCode={this.fetchDataZipCode}
