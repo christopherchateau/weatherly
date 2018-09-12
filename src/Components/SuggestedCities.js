@@ -2,27 +2,29 @@ import React from "react";
 import "./SuggestedCities.css";
 
 function SuggestedCities(props) {
-let { suggestedCities, handleSuggestionClick } = props;
-  console.log(suggestedCities)
-  handleSuggestionClick()
+  let { suggestedCities, handleSuggestionClick } = props;;
   if (suggestedCities.length > 0) {
-     return (
+    return (
       <div>
-        <ul class="drop-down-list">
-          {suggestedCities.map( node => {
-            return <li>{node.finalWord}</li>
+        <ul className="drop-down-list">
+          {suggestedCities.map((node, ind) => {
+            return (
+              <li
+                key={ind}
+                onClick={e => handleSuggestionClick(e.target.innerText)}
+              >
+                {node.finalWord}
+              </li>
+            );
           })}
         </ul>
       </div>
-      );
+    );
   } else {
-    return (
-      <div></div> //return an empty div if no cities are in the list 
-      );
+    return <div></div>;
   }
 }
 
 export default SuggestedCities;
 
-
-//after the suggested city is picked, use handleSuggestionClick to append the selected city from the dropdown list to the search bar 
+//after the suggested city is picked, use handleSuggestionClick to append the selected city from the dropdown list to the search bar

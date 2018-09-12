@@ -6,11 +6,12 @@ describe("SevenHour component", () => {
   let wrapper;
 
   beforeEach(() => {
-
+    wrapper = shallow(<SevenHour />);
+    localStorage.clear();
   });
 
-  it("should be a thing", () => {
-    //expect(wrapper).toBeDefined();
+  it.skip("should be a thing", () => {
+    expect(wrapper).toBeDefined();
   });
 
 });

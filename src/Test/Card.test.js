@@ -6,11 +6,12 @@ describe("Card component", () => {
   let wrapper;
 
   beforeEach(() => {
-
+    wrapper = shallow(<Card />);
+    localStorage.clear();
   });
 
-  it("should be a thing", () => {
-    //expect(wrapper).toBeDefined();
+  it.skip("should be a thing", () => {
+    expect(wrapper).toBeDefined();
   });
 
 });
