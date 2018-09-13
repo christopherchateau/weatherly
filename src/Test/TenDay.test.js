@@ -5,12 +5,10 @@ import TenDay from "../Components/TenDay";
 import data from "../mockAPI.js";
 
 describe("TenDay component", () => {
-  let { forecast } = data;
+  let forecastday = data.forecast.simpleforecast.forecastday[0];
 
   it("renders correctly", () => {
-    // const tree = renderer
-    //   .create(<TenDay dailyForecast={forecast} />)
-    //   .toJSON();
+    // const tree = renderer.create(<TenDay dailyForecast={forecast} />).toJSON();
     // expect(tree).toMatchSnapshot();
   });
 });
