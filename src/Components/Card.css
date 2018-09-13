@@ -1,24 +1,22 @@
-/* ADD FONT */
-
 .tenDayCards,
 .sevenHourCards {
   display: flex;
   flex-direction: row;
-  padding-top: 10px;
-  padding-bottom: 70px;
-  overflow: auto;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   letter-spacing: 1px;
+  overflow: auto;
+  padding-bottom: 70px;
+  padding-top: 10px;
 }
 
 .card {
-  width: 100%;
-  border: 5px solid white;
-  height: 180px;
-  padding: 10px;
-  border-radius: 10px;
-  margin-right: 10px;
   background-color: rgba(104, 100, 151, 0.5);
+  border: 5px solid white;
+  border-radius: 10px;
+  height: 180px;
+  margin-right: 10px;
+  padding: 10px;
+  width: 100%;
 }
 
 .card h1 {
@@ -33,22 +31,21 @@
 }
 
 .card p {
-  margin-top: 10px;
   font-size: 12px;
+  margin-top: 10px;
   opacity: 0.8;
 }
 
 .fa-cloud,
-.fa-snowflake, 
-.fa-sun, 
-.fa-cloud, 
-.fa-umbrella, 
-.fa-bolt, 
+.fa-snowflake,
+.fa-sun,
+.fa-cloud,
+.fa-umbrella,
+.fa-bolt,
 .fa-feather {
   font-size: 60px;
   margin: 10px;
   opacity: 1;
 }
 
-
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,500')
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,500");

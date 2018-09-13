@@ -2,14 +2,14 @@ import React from "react";
 import { configure, shallow, mount } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import App from "../App";
-import data from '../mockAPI.js'
+import data from "../mockAPI.js";
 
 configure({ adapter: new Adapter() });
 
 describe("App component", () => {
   let wrapper;
   let mockProps = {
-    location: ['Denver', 'CO'],
+    location: ["Denver", "CO"],
     currentConditions: data.forecast.txt_forecast.forecastday["0"].fcttext,
     currentObservation: data.current_observation,
     hourlyForecast: data.hourly_forecast,
@@ -22,20 +22,20 @@ describe("App component", () => {
   beforeEach(() => {
     wrapper = shallow(<App />);
   });
-  
+
   afterEach(() => {
     localStorage.clear();
   });
-  
+
   it("should be a thing", () => {
     expect(wrapper).toBeDefined();
   });
 
   it.skip("should fetch data", () => {
-    const initialState = wrapper.instance().state
+    const initialState = wrapper.instance().state;
     const fetchAPI = mockFetch(mockUrl);
-    wrapper.instance().fetchData('CO/Denver')
-    const afterState = wrapper.instance().state
+    wrapper.instance().fetchData("CO/Denver");
+    const afterState = wrapper.instance().state;
     expect(mockFetch(mockUrl).toHaveBeenCalled());
   });
 
