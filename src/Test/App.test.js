@@ -20,7 +20,6 @@ describe("App component", () => {
   const mockFetch = jest.fn();
 
   beforeEach(() => {
-    // wrapper = shallow(<App {...props} />);
     wrapper = shallow(<App />);
   });
   
@@ -32,15 +31,13 @@ describe("App component", () => {
     expect(wrapper).toBeDefined();
   });
 
-  // it.skip("should fetch data", () => {
-  //   const initialState = wrapper.instance().state
-  //   const fetchAPI = mockFetch(mockUrl);
-  //   wrapper.instance().fetchData('CO/Denver')
-  //   const afterState = wrapper.instance().state
-  //   //console.log(fetchData('CO/Denver'))
-  //   console.log(afterState)
-  //   expect(mockFetch(mockUrl).toHaveBeenCalled());
-  // });
+  it.skip("should fetch data", () => {
+    const initialState = wrapper.instance().state
+    const fetchAPI = mockFetch(mockUrl);
+    wrapper.instance().fetchData('CO/Denver')
+    const afterState = wrapper.instance().state
+    expect(mockFetch(mockUrl).toHaveBeenCalled());
+  });
 
   it("should retrieveLastLocation if local storage is not empty", () => {
     localStorage.setItem("location", ["Golden", "CO"]);
@@ -63,7 +60,6 @@ describe("App component", () => {
     wrapper = mount(<App />);
     wrapper.instance().fetchData("CO/Denver");
     wrapper.setState({ mockProps });
-    // console.log(wrapper.instance().state);
     expect(wrapper.find("Search").length).toEqual(1);
     expect(wrapper.find("CurrentWeather").length).toEqual(1);
     expect(wrapper.find("SevenHour").length).toEqual(1);

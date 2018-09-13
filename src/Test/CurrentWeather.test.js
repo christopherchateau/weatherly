@@ -12,7 +12,7 @@ describe("CurrentWeather component", () => {
     relative_humidity: 20
   };
 
-  it("should be a thing", () => {
+  it("should render", () => {
     wrapper = mount(
       <CurrentWeather
         currentObservation={mockObservation}
