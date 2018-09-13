@@ -14,8 +14,8 @@ In this project you will be getting your first real interactions with ReactJS, a
 
 ![Screenshot](https://github.com/christopherchateau/weatherly/blob/master/src/images/weathrly.png?raw=true)
 
-![Initial wireframe of our app design](src/images/wireframe.jpg)
+![Initial wireframe of our app design](https://github.com/christopherchateau/weatherly/blob/master/src/images/wireframe.jpg)
 
-![Design inspiration image 1](src/images/inspo1.jpg)
+![Design inspiration image 1](https://github.com/christopherchateau/weatherly/blob/master/src/images/inspo1.jpg)
 
-![Design inspiration image 2](src/images/inspo2.jpg)
+![Design inspiration image 2](https://github.com/christopherchateau/weatherly/blob/master/src/images/inspo2.jpg)
