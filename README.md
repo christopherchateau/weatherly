@@ -1,3 +1,8 @@
+The Weathrly Project
+
+
+This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+
 # Weathrly
 
 It’s important to know what Mother Nature is going to throw at you each day – what if you wear flip flops because it’s sunny and 65 degrees in the morning and then it snows all afternoon (this is Colorado, after all).
@@ -8,3 +13,9 @@ In this project you will be getting your first real interactions with ReactJS, a
 
 
 ![Screenshot](https://github.com/christopherchateau/weatherly/blob/master/src/images/weathrly.png?raw=true)
+
+![Initial wireframe of our app design](./src/Components/Images/wireframe.jpg)
+
+![Design inspiration image 1](./src/Components/Images/inspo1.jpg)
+
+![Design inspiration image 2](./src/Components/Images/inspo2.jpg)
