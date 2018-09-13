@@ -10,7 +10,7 @@ describe("SuggestedCities component", () => {
     localStorage.clear();
   });
 
-  it("should be a thing", () => {
+  it.skip("should be a thing", () => {
     expect(wrapper).toBeDefined();
   });
 });

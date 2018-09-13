@@ -3,6 +3,7 @@ import Card from "./Card";
 
 function SevenHour(props) {
   const sevenHourData = props.hourlyForecast.slice(0, 7);
+  console.log(sevenHourData)
   return (
     <div className="sevenHourCards">
       {sevenHourData.map((data, index) => {

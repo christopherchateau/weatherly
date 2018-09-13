@@ -40,22 +40,21 @@ function Card(props) {
   const data = Object.keys(props);
   if (data.includes("FCTTIME")) {
     let hour = props.FCTTIME.hour;
+    let { condition, pop, icon } = props;
 
     hour > 12 ? (hour = `${hour - 12} pm`) : (hour = `${hour} am`);
 
-    let chanceOfRain = props.pop;
-
-    chanceOfRain == 0
-      ? (chanceOfRain = "")
-      : (chanceOfRain = `Chance of Rain ${chanceOfRain}%`);
+    pop == 0
+      ? (pop = "")
+      : (pop = `Chance of Rain ${pop}%`);
 
     return (
       <div className="card">
-        <h1>{hour}</h1>
-        <FontAwesomeIcon icon={icons[props.icon]} />
+        <h1>{props.FCTTIME.hour}</h1>
+        <FontAwesomeIcon icon={icons[icon]} />
         <h1>{Math.round(props.temp.english)}° F</h1>
-        <p>{props.condition}</p>
-        <p>{chanceOfRain}</p>
+        <p>{condition}</p>
+        <p>{pop}</p>
       </div>
     );
   } else {

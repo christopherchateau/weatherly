@@ -1,36 +1,40 @@
 import React from "react";
-import renderer from 'react-test-renderer';
+import renderer from "react-test-renderer";
 import { shallow, mount } from "enzyme";
 import Card from "../Components/Card";
 import data from "../mockAPI.js";
 
-
 describe("Card component", () => {
-  let weekday = data.current_observation
-  console.log(weekday)
-  let wrapper;
-  
+  let wrapperSevenHour;
+  let wrapperTenDay;
+
+  let mockDataHourly = {
+    hour: "1 am",
+    temperature: "80",
+    conditions: "Clear",
+    chanceOfRain: 25
+  };
+
+  let mockDataDaily = {
+    day: "Monday",
+    temperature: 80,
+    high: 85,
+    low: 70,
+    conditions: "Clear"
+  };
+
   beforeEach(() => {
-    wrapper = shallow(<Card />);
-    localStorage.clear();
+    wrapper = mount(<Card hourlyForecast={hourlyForecast} />);
   });
 
-  it.skip("should be a thing", () => {
-    console.log(wrapper)
+  it("should be a thing", () => {
     expect(wrapper).toBeDefined();
   });
 
-  // it('should take in data for rendering cards', () => {
-  //   const dataSet = Object.keys(data);
-  //   console.log(dataSet)
-  //   expect(dataSet).toEqual([ 'response', 'current_observation', 'forecast', 'hourly_forecast' ]);
+  // it('renders correctly', () => {
+  //   const tree = renderer.create(
+  //     <Card  {...data} />
+  //   ).toJSON();
+  //   expect(tree).toMatchSnapshot();
   // });
-  // const data = data.hourly_forecast
-
-  it('renders correctly', () => {
-    const tree = renderer.create(
-      <Card  {...data} />
-    ).toJSON();
-    expect(tree).toMatchSnapshot();
-  });
 });
