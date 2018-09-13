@@ -13,19 +13,18 @@
 
 .submit-button {
   border-radius: 5px;
-  box-shadow: rgba(104, 100, 151, 0.5) 0 0px 0px 2px inset;
-  color: rgba(30, 22, 54, 0.7);
   cursor: pointer;
   font-family: 'Roboto', sans-serif;
-  font-size: 10px;
+  font-size: 16px;
   font-weight: bold;
+  text-transform: uppercase;
   letter-spacing: 1px;
-  outline: none;
-  padding: 5px;
-  text-decoration: none;
   transition: all 500ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
-  width: 100px;
+  width: 200px;
   height: 20px;
+  background: transparent;
+  color: white;
+  border: none;
 }
 
 .submit-button:hover {
@@ -84,7 +83,7 @@ button:focus {
   background-color: none;
   border-radius: 50px;
   justify-content: top;
-  margin: 25px 100px 0 0;
+  margin: 25px 100px 80px 0;
   background: transparent;
 }
 
@@ -106,6 +105,19 @@ button:focus {
   justify-content: space-between;
 }
 
+
+@media screen and (max-width: 850px) {
+  .title-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+  .search-form {
+    margin-left: 60px;
+  }
+  .title {
+    margin: 10px auto 0 auto;
+  }
+}
 
 
 

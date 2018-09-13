@@ -6,10 +6,12 @@ import cityStateList from "../cityStateList";
 
 describe("Search component", () => {
   let wrapper;
+  let updateLocation = 'Denver, CO';
+  let fetchDataZipCode = 80220; 
   let mockTrie;
 
   beforeEach(() => {
-    wrapper = shallow(<Search />);
+    wrapper = shallow(<Search updateLocation={updateLocation} fetchDataZipCode={fetchDataZipCode}/>);
     localStorage.clear();
     mockTrie = new Trie();
     mockTrie.populate(cityStateList.data);
