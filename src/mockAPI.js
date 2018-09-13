@@ -54,7 +54,7 @@ const data = {
       temp_f: 0,
       temp_c: 7.8,
       relative_humidity: '',
-      wind_string: '',
+      wind_string: 'From the NNW at 6 MPH Gusting to 7 MPH',
       wind_dir: 'NE',
       wind_degrees: 51,
       wind_mph: 1.0,

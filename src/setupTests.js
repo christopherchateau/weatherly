@@ -22,3 +22,13 @@ class LocalStorage {
 
 global.localStorage = new LocalStorage();
 configure({ adapter: new Adapter() });
+
+global.fetch = () => {
+  const promise = {
+    then() {
+      return promise;
+    },
+    catch() {}
+  }
+  return promise;
+}
