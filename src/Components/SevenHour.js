@@ -6,7 +6,16 @@ function SevenHour(props) {
   return (
     <div className="sevenHourCards">
       {sevenHourData.map((data, index) => {
-        return <Card {...data} key={index} />;
+        return (
+          <Card
+            hour={data.FCTTIME.hour}
+            icon={data.icon}
+            temp={data.temp.english}
+            condition={data.condition}
+            chanceOfRain={data.pop}
+            key={index}
+          />
+        );
       })}
     </div>
   );

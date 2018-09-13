@@ -5,7 +5,7 @@ import SevenHour from "./Components/SevenHour";
 import TenDay from "./Components/TenDay";
 import apiConfig from "./apiKey";
 import "./App.css";
-import Welcome from './Components/Welcome'
+import Welcome from "./Components/Welcome";
 
 const apiKey = apiConfig.weatherUndergroundApiKey;
 
@@ -31,7 +31,7 @@ export default class App extends Component {
     }
   }
 
-fetchData = location => {
+  fetchData = location => {
     fetch(
       `http://api.wunderground.com/api/${apiKey}/geolookup/conditions/hourly/forecast10day/q/${location}.json`
     )
@@ -65,9 +65,9 @@ fetchData = location => {
         let cityCall = response.location.city + ", " + response.location.state;
         this.updateLocation(cityCall);
       })
-    .catch(err => {
-      throw new Error(err);
-    });
+      .catch(err => {
+        throw new Error(err);
+      });
   };
 
   updateLocation = location => {
@@ -105,7 +105,8 @@ fetchData = location => {
           />
           <h4>
             Error: Location Not Found <br />
-            Please enter Zip Code or City, State<br />
+            Please enter Zip Code or City, State
+            <br />
             Example: 'Denver, CO'
           </h4>
         </div>
