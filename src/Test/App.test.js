@@ -1,25 +1,33 @@
 import React from "react";
-//import ReactDOM from 'react-dom'
 import { configure, shallow, mount } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import App from "../App";
+import data from '../mockAPI.js'
 
 configure({ adapter: new Adapter() });
 
 describe("App component", () => {
   let wrapper;
-  let props
-  const mockUrl = `http://api.wunderground.com/api/12345/geolookup/conditions/hourly/forecast10day/q/CO/Denver.json`
+  let mockProps = {
+    location: ['Denver', 'CO'],
+    currentConditions: data.forecast.txt_forecast.forecastday["0"].fcttext,
+    currentObservation: data.current_observation,
+    hourlyForecast: data.hourly_forecast,
+    dailyForecast: data.forecast,
+    isToggleOn: true
+  };
+  const mockUrl = `http://api.wunderground.com/api/12345/geolookup/conditions/hourly/forecast10day/q/CO/Denver.json`;
   const mockFetch = jest.fn();
 
   beforeEach(() => {
-    wrapper = shallow(<App {...props}/>);
+    // wrapper = shallow(<App {...props} />);
+    wrapper = shallow(<App />);
   });
-
+  
   afterEach(() => {
     localStorage.clear();
   });
-
+  
   it("should be a thing", () => {
     expect(wrapper).toBeDefined();
   });
@@ -42,13 +50,22 @@ describe("App component", () => {
 
   it("should commit last search to local storage", () => {
     expect(localStorage).toEqual({ store: {} });
-    wrapper.instance().updateLocation('Denver, CO')
-    expect(localStorage).toEqual({ store: { location: '["Denver","CO"]' } });
-  })
+    wrapper.instance().updateLocation("Golden, CO");
+    expect(localStorage).toEqual({ store: { location: '["Golden","CO"]' } });
+  });
 
   it("should update state when updateLocation in invoked", () => {
-    wrapper.instance().updateLocation('Denver, CO')
-    expect(wrapper.instance().state.location).toEqual(['Denver', 'CO'])
-  })
-});
+    wrapper.instance().updateLocation("Boulder, CO");
+    expect(wrapper.instance().state.location).toEqual(["Boulder", "CO"]);
+  });
 
+  it.skip("should render the search, currentWeather and SevenHour component", () => {
+    wrapper = mount(<App />);
+    wrapper.instance().fetchData("CO/Denver");
+    wrapper.setState({ mockProps });
+    // console.log(wrapper.instance().state);
+    expect(wrapper.find("Search").length).toEqual(1);
+    expect(wrapper.find("CurrentWeather").length).toEqual(1);
+    expect(wrapper.find("SevenHour").length).toEqual(1);
+  });
+});

@@ -49,7 +49,7 @@ class Search extends Component {
   handleSearch(event) {
     event.preventDefault();
     let input = this.state.value;
-    autoComplete.select(input); //pull into separate function
+    autoComplete.select(input);
     this.props.fetchDataZipCode(input);
   }
 
