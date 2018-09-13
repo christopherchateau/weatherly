@@ -1,14 +1,14 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import { shallow, mount } from "enzyme";
+import { mount } from "enzyme";
 import Card from "../Components/Card";
-import data from "../mockAPI.js";
 
 describe("Card component", () => {
   let wrapperSevenHour;
-  let wrapperTenDay;
+  let wrapperDaily;
 
   let mockDataHourly = {
+    icon: "clear",
     hour: "1 am",
     temperature: "80",
     conditions: "Clear",
@@ -16,25 +16,43 @@ describe("Card component", () => {
   };
 
   let mockDataDaily = {
+    icon: "clear",
     day: "Monday",
-    temperature: 80,
     high: 85,
     low: 70,
     conditions: "Clear"
   };
 
-  beforeEach(() => {
-    wrapper = mount(<Card hourlyForecast={hourlyForecast} />);
+  it("should create daily forecast cards", () => {
+    wrapperDaily = mount(
+      <Card
+        icon={mockDataDaily.icon}
+        weekDay={mockDataDaily.day}
+        highTemp={mockDataDaily.high}
+        lowTemp={mockDataDaily.low}
+        conditions={mockDataDaily.conditions}
+      />
+    );
+    expect(wrapperDaily).toBeDefined;
+    expect(wrapperDaily.find("p")).toHaveLength(1);
+    expect(wrapperDaily.find("h1")).toHaveLength(1);
+    expect(wrapperDaily.find("h3")).toHaveLength(2);
+    expect(wrapperDaily.find("div")).toHaveLength(1);
   });
 
-  it("should be a thing", () => {
-    expect(wrapper).toBeDefined();
+  it("should create hourly forecast cards", () => {
+    wrapperSevenHour = mount(
+      <Card
+        icon={mockDataHourly.icon}
+        hour={mockDataHourly.hour}
+        temp={mockDataHourly.temperature}
+        condition={mockDataHourly.conditions}
+        chanceOfRain={mockDataHourly.chanceOfRain}
+      />
+    );
+    expect(wrapperSevenHour).toBeDefined;
+    expect(wrapperSevenHour.find("p")).toHaveLength(2);
+    expect(wrapperSevenHour.find("h1")).toHaveLength(2);
+    expect(wrapperSevenHour.find("div")).toHaveLength(1);
   });
-
-  // it('renders correctly', () => {
-  //   const tree = renderer.create(
-  //     <Card  {...data} />
-  //   ).toJSON();
-  //   expect(tree).toMatchSnapshot();
-  // });
 });

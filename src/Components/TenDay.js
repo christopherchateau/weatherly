@@ -6,7 +6,16 @@ function TenDay(props) {
   return (
     <div className="tenDayCards">
       {forecastday.map((day, index) => {
-        return <Card {...day} key={index} />;
+        return (
+          <Card
+            icon={day.icon}
+            weekDay={day.date.weekday_short}
+            highTemp={day.high.fahrenheit}
+            lowTemp={day.low.fahrenheit}
+            conditions={day.conditions}
+            key={index}
+          />
+        );
       })}
     </div>
   );

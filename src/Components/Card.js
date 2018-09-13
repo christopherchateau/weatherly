@@ -38,32 +38,33 @@ function Card(props) {
   };
 
   const data = Object.keys(props);
-  if (data.includes("FCTTIME")) {
-    let hour = props.FCTTIME.hour;
-    let { condition, pop, icon } = props;
+  if (data.includes("chanceOfRain")) {
+    let hour = props.hour;
 
     hour > 12 ? (hour = `${hour - 12} pm`) : (hour = `${hour} am`);
 
-    pop == 0
-      ? (pop = "")
-      : (pop = `Chance of Rain ${pop}%`);
+    let chanceOfRain = props.chanceOfRain;
+
+    chanceOfRain == 0
+      ? (chanceOfRain = "")
+      : (chanceOfRain = `Chance of Rain ${chanceOfRain}%`);
 
     return (
       <div className="card">
-        <h1>{props.FCTTIME.hour}</h1>
-        <FontAwesomeIcon icon={icons[icon]} />
-        <h1>{Math.round(props.temp.english)}° F</h1>
-        <p>{condition}</p>
-        <p>{pop}</p>
+        <h1>{hour}</h1>
+        <FontAwesomeIcon icon={icons[props.icon]} />
+        <h1>{Math.round(props.temp)}° F</h1>
+        <p>{props.condition}</p>
+        <p>{chanceOfRain}</p>
       </div>
     );
   } else {
     return (
       <div className="card">
-        <h1>{props.date.weekday.slice(0, 3)}</h1>
+        <h1>{props.weekDay}</h1>
         <FontAwesomeIcon icon={icons[props.icon]} />
-        <h3>{props.high.fahrenheit}° F</h3>
-        <h3>{props.low.fahrenheit}° F</h3>
+        <h3>{props.highTemp}° F</h3>
+        <h3>{props.lowTemp}° F</h3>
         <p>{props.conditions}</p>
       </div>
     );
