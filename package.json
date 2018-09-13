@@ -10,6 +10,7 @@
     "fetch-mock": "^7.0.0-alpha.6",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
+    "react-meta-tags": "^0.5.1",
     "react-scripts": "1.1.5"
   },
   "scripts": {
