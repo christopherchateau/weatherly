@@ -1,28 +1,14 @@
 import React from "react";
-import renderer from 'react-test-renderer';
+import renderer from "react-test-renderer";
 import { shallow, mount } from "enzyme";
 import TenDay from "../Components/TenDay";
 import data from "../mockAPI.js";
 
 describe("TenDay component", () => {
-  let wrapper;
+  let forecastday = data.forecast.simpleforecast.forecastday[0];
 
-  // beforeEach(() => {
-  //   wrapper = shallow(<TenDay />);
-  //   localStorage.clear();
-  // });
-
-  it.skip("should be a thing", () => {
-    expect(wrapper).toBeDefined();
+  it("renders correctly", () => {
+    // const tree = renderer.create(<TenDay dailyForecast={forecast} />).toJSON();
+    // expect(tree).toMatchSnapshot();
   });
-
-  let { forecast } = data;
-
-  it('renders correctly', () => {
-    const tree = renderer.create(
-      <TenDay dailyForecast={ forecast } />
-    ).toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-
 });

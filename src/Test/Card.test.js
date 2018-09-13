@@ -1,36 +1,57 @@
 import React from "react";
-import renderer from 'react-test-renderer';
-import { shallow, mount } from "enzyme";
+import { mount } from "enzyme";
 import Card from "../Components/Card";
-import data from "../mockAPI.js";
-
 
 describe("Card component", () => {
-  let weekday = data.current_observation
-  console.log(weekday)
-  let wrapper;
-  
-  beforeEach(() => {
-    wrapper = shallow(<Card />);
-    localStorage.clear();
+  let wrapperSevenHour;
+  let wrapperDaily;
+
+  let mockDataHourly = {
+    icon: "clear",
+    hour: "1 am",
+    temperature: "80",
+    conditions: "Clear",
+    chanceOfRain: 25
+  };
+
+  let mockDataDaily = {
+    icon: "clear",
+    day: "Monday",
+    high: 85,
+    low: 70,
+    conditions: "Clear"
+  };
+
+  it("should create daily forecast cards", () => {
+    wrapperDaily = mount(
+      <Card
+        icon={mockDataDaily.icon}
+        weekDay={mockDataDaily.day}
+        highTemp={mockDataDaily.high}
+        lowTemp={mockDataDaily.low}
+        conditions={mockDataDaily.conditions}
+      />
+    );
+    expect(wrapperDaily).toBeDefined;
+    expect(wrapperDaily.find("p")).toHaveLength(1);
+    expect(wrapperDaily.find("h1")).toHaveLength(1);
+    expect(wrapperDaily.find("h3")).toHaveLength(2);
+    expect(wrapperDaily.find("div")).toHaveLength(1);
   });
 
-  it.skip("should be a thing", () => {
-    console.log(wrapper)
-    expect(wrapper).toBeDefined();
-  });
-
-  // it('should take in data for rendering cards', () => {
-  //   const dataSet = Object.keys(data);
-  //   console.log(dataSet)
-  //   expect(dataSet).toEqual([ 'response', 'current_observation', 'forecast', 'hourly_forecast' ]);
-  // });
-  // const data = data.hourly_forecast
-
-  it('renders correctly', () => {
-    const tree = renderer.create(
-      <Card  {...data} />
-    ).toJSON();
-    expect(tree).toMatchSnapshot();
+  it("should create hourly forecast cards", () => {
+    wrapperSevenHour = mount(
+      <Card
+        icon={mockDataHourly.icon}
+        hour={mockDataHourly.hour}
+        temp={mockDataHourly.temperature}
+        condition={mockDataHourly.conditions}
+        chanceOfRain={mockDataHourly.chanceOfRain}
+      />
+    );
+    expect(wrapperSevenHour).toBeDefined;
+    expect(wrapperSevenHour.find("p")).toHaveLength(2);
+    expect(wrapperSevenHour.find("h1")).toHaveLength(2);
+    expect(wrapperSevenHour.find("div")).toHaveLength(1);
   });
 });

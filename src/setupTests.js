@@ -29,6 +29,6 @@ global.fetch = () => {
       return promise;
     },
     catch() {}
-  }
+  };
   return promise;
-}
+};

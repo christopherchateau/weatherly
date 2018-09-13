@@ -2,14 +2,14 @@ import React from "react";
 import { configure, shallow, mount } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import App from "../App";
-import data from '../mockAPI.js'
+import data from "../mockAPI.js";
 
 configure({ adapter: new Adapter() });
 
 describe("App component", () => {
   let wrapper;
   let mockProps = {
-    location: ['Denver', 'CO'],
+    location: ["Denver", "CO"],
     currentConditions: data.forecast.txt_forecast.forecastday["0"].fcttext,
     currentObservation: data.current_observation,
     hourlyForecast: data.hourly_forecast,
@@ -20,27 +20,24 @@ describe("App component", () => {
   const mockFetch = jest.fn();
 
   beforeEach(() => {
-    // wrapper = shallow(<App {...props} />);
     wrapper = shallow(<App />);
   });
-  
+
   afterEach(() => {
     localStorage.clear();
   });
-  
+
   it("should be a thing", () => {
     expect(wrapper).toBeDefined();
   });
 
-  // it.skip("should fetch data", () => {
-  //   const initialState = wrapper.instance().state
-  //   const fetchAPI = mockFetch(mockUrl);
-  //   wrapper.instance().fetchData('CO/Denver')
-  //   const afterState = wrapper.instance().state
-  //   //console.log(fetchData('CO/Denver'))
-  //   console.log(afterState)
-  //   expect(mockFetch(mockUrl).toHaveBeenCalled());
-  // });
+  it.skip("should fetch data", () => {
+    const initialState = wrapper.instance().state;
+    const fetchAPI = mockFetch(mockUrl);
+    wrapper.instance().fetchData("CO/Denver");
+    const afterState = wrapper.instance().state;
+    expect(mockFetch(mockUrl).toHaveBeenCalled());
+  });
 
   it("should retrieveLastLocation if local storage is not empty", () => {
     localStorage.setItem("location", ["Golden", "CO"]);
@@ -63,7 +60,6 @@ describe("App component", () => {
     wrapper = mount(<App />);
     wrapper.instance().fetchData("CO/Denver");
     wrapper.setState({ mockProps });
-    // console.log(wrapper.instance().state);
     expect(wrapper.find("Search").length).toEqual(1);
     expect(wrapper.find("CurrentWeather").length).toEqual(1);
     expect(wrapper.find("SevenHour").length).toEqual(1);

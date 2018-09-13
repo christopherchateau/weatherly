@@ -1,33 +1,30 @@
 import React, { Component } from "react";
-import './Welcome.css'
+import "./Welcome.css";
 
 class Welcome extends Component {
   constructor() {
     super();
     this.state = {
       displayWelcome: true
-    }
+    };
   }
 
   toggleWelcome() {
-   window.setTimeout(() => {
-      this.setState({ displayWelcome: !this.state.displayWelcome});
-      }, 2000);
+    window.setTimeout(() => {
+      this.setState({ displayWelcome: !this.state.displayWelcome });
+    }, 1500);
   }
-  
+
   render() {
     if (this.state.displayWelcome) {
-      return(
+      return (
         <div>
           {this.toggleWelcome()}
           <h1 className="welcome">welcome</h1>
         </div>
-      )
-    } else {   
-      return(
-        <div>
-        </div>
-      )
+      );
+    } else {
+      return <div />;
     }
   }
 }
