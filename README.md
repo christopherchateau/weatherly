@@ -1,3 +1,12 @@
+The Weathrly Project
+
+![Initial wireframe of our app design](./src/Components/Images/wireframe.jpg)
+
+![Design inspiration image 1](./src/Components/Images/inspo1.jpg)
+
+![Design inspiration image 2](./src/Components/Images/inspo2.jpg)
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
