@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./Search.css";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import cityStateList from "../cityStateList";
 import { Trie } from "@tmcmeans/autocomplete";
@@ -32,7 +31,7 @@ class Search extends Component {
     const value = event.target.value;
     let suggestedCities;
 
-    value.length
+    value.length && value.match(/[A-Za-z]/)
       ? (suggestedCities = this.generatedSuggestedCities(value))
       : (suggestedCities = []);
 
@@ -55,6 +54,7 @@ class Search extends Component {
 
   handleSuggestionClick(value) {
     this.props.fetchDataZipCode(value);
+    this.setState({ value: "" });
   }
 
   render() {
